@@ -8,6 +8,9 @@
             <xpath expr="//page/field[@name='note']" position="after">
                 <field name="sale_note_bank_info" class="oe_inline" placeholder="Payment bank information... (note: you can setup default ones in the Configuration menu)"/>
             </xpath>
+            <xpath expr="//field[@name='order_line']/tree/field[@name='analytic_tag_ids']" position="replace"></xpath>
+            <xpath expr="//field[@name='order_line']/tree/field[@name='tax_id']" position="replace"></xpath>
+            <xpath expr="//field[@name='order_line']/tree/field[@name='route_id']" position="replace"></xpath>
         </field>
     </record>
 </odoo>

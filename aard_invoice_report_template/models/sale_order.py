@@ -2,6 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import api, fields, models, _
+from odoo.addons import decimal_precision as dp
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
@@ -12,3 +13,6 @@ class SaleOrder(models.Model):
 
     sale_note_bank_info = fields.Text(string="Bank Information", default=_default_note_bank)
     
+class SaleOrderLine(models.Model):
+    _inherit = 'sale.order.line'
+    price_unit = fields.Monetary('Unit Price', required=True, digits=dp.get_precision('Product Price'), default=0.0)

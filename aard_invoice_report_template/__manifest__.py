@@ -5,7 +5,7 @@
     'author': "Duy Khanh Nguyen",
     'category': 'Sales',
     'version': '12.0.1.0.1',
-    'depends': ['sale'],
+    'depends': ['sale', 'sale_stock'],
     'data': [
         'views/res_config_settings_views.xml',
         'views/sale_views.xml',

@@ -114,6 +114,11 @@
                     </table>
                 </div>
             </div>
-        </xpath> 
+        </xpath>
+        <xpath expr="//table[hasclass('o_main_table')]/thead/tr/th[5]" position="replace"></xpath>
+        <!--<xpath expr="//table[hasclass('o_main_table')]/thead/tr/th[5]" position="replace"></xpath>-->
+        <xpath expr="//t[@groups='account.group_show_line_subtotals_tax_excluded'][1]" position="replace"></xpath>
+        <xpath expr="//t[@t-as='line']/tr/t/td[5]" position="replace"></xpath>
+        <xpath expr="//span[@t-field='line.price_subtotal']" position="replace"></xpath>
     </template>
 </odoo>
