@@ -1,0 +1,8 @@
+.nav-pills-minh {
+    .nav-link { color: black;}
+    .nav-link.active,
+    .show > .nav-link {
+      color: white;
+      background-color: grey;
+    }
+  }
