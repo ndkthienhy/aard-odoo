@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo noupdate="1">
+    <data>        
+        <record id='lunch_rule_working_hour' model='aard.hr.lunch.rule'>
+            <field name="name">Lunch for Working Hour</field>
+            <field name="minimum_total_hours">5</field>
+            <field name="number_meal">1</field>
+        </record>
+
+        <record id='lunch_rule_overtime_3h' model='aard.hr.lunch.rule'>
+            <field name="name">Lunch for Overtime 3h</field>
+            <field name="minimum_total_hours">3</field>
+            <field name="number_meal">1</field>
+        </record>
+
+        <record id='lunch_rule_overtime_2h' model='aard.hr.lunch.rule'>
+            <field name="name">Lunch for Overtime 2h</field>
+            <field name="minimum_total_hours">2</field>
+            <field name="number_meal">1</field>
+        </record>
+
+        <record id='lunch_rule_ot_sunday' model='aard.hr.lunch.rule'>
+            <field name="name">Lunch for OT Sunday</field>
+            <field name="minimum_total_hours">5</field>
+            <field name="number_meal">1</field>
+        </record>
+
+        <record id='lunch_rule_security' model='aard.hr.lunch.rule'>
+            <field name="name">Lunch for Security</field>
+            <field name="minimum_total_hours">6</field>
+            <field name="number_meal">1</field>
+        </record>
+    </data>
+</odoo>

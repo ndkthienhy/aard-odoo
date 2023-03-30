@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_aard_hr_lunch,aard.hr.lunch,model_aard_hr_lunch,hr.group_hr_manager,1,1,1,1
+access_aard_hr_lunch_generate,aard.hr.lunch.generate,model_aard_hr_lunch_generate,hr.group_hr_manager,1,1,1,1
+access_aard_hr_lunch_rule,aard.hr.lunch.rule,model_aard_hr_lunch_rule,hr.group_hr_manager,1,1,1,1

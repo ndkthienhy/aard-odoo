@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- views overwrite tree view-->
+
+    <record id="view_attendance_tree_inherit_attendance_validation" model="ir.ui.view">
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='check_out']" position="after">
+                <!-- <field name="valid_check_in"/>
+                <field name="valid_check_out"/> -->
+                <field name="late_attendance_hours" sum="Subtotal"/>
+                <field name="early_leave_hours" sum="Subtotal"/>
+                <field name="valid_worked_hours" sum="Subtotal"/>
+                <field name="resource_calendar_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_hr_attendance_kanban_inherit_attendance_validation" model="ir.ui.view">
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.view_hr_attendance_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban/templates/t/div" position="inside">
+                <i class="fa fa-clock-o" aria-label="Shift working time" role="img" title="Shift working time"></i>
+                <field name="resource_calendar_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_attendance_view_form_inherit_attendance_validation" model="ir.ui.view">
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.hr_attendance_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/group" position="replace">
+                <group>
+                    <group>
+                        <field name="employee_id"/>
+                        <field name="check_in"/>
+                        <field name="check_out"/>
+                        <field name="worked_hours"/>
+                    </group>
+                    <group>
+                        <field name="resource_calendar_id" readonly="0"/>
+                        <field name="valid_check_in"/>
+                        <field name="valid_check_out"/>
+                        <field name="valid_worked_hours"/>
+                    </group> 
+                </group>
+                               
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Override Filter -->
+    <record id="hr_attendance_view_filter_inherited" model="ir.ui.view">
+        <field name="name">hr_attendance_view_filter_inherited</field>
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.hr_attendance_view_filter"/>
+        <field name="arch" type="xml">
+            <search string="Hr Attendance Search">                
+                <filter string="Current Month" name="month" domain="[('check_in', '&gt;=', datetime.datetime.now().strftime('%Y-%m-01'))]" />
+            </search>
+        </field>
+    </record>
+
+    <record id="hr_attendance.hr_attendance_action" model="ir.actions.act_window">
+        <field name="name">Attendances</field>
+        <field name="res_model">hr.attendance</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{"search_default_month":1}</field>
+        <field name="search_view_id" ref="hr_attendance.hr_attendance_view_filter" />
+        <field name="help" type="html">
+            <p class="o_view_nocontent_empty_folder">
+                No attendance records found
+            </p><p>
+                The attendance records of your employees will be displayed here.
+            </p>
+        </field>
+    </record>
+<!-- Override Attendance Reporting -->
+    <record id="hr_attendance_view_pivot_inherit" model="ir.ui.view">
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.hr_attendance_view_pivot"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='worked_hours']" position="after"> 
+                <field name="valid_worked_hours" type="measure"/>
+                <field name="attendance_days" type="measure"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_attendance_view_graph_inherit" model="ir.ui.view">
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.hr_attendance_view_graph"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='worked_hours']" position="after"> 
+                <field name="valid_worked_hours" type="measure"/>
+                <field name="attendance_days" type="measure"/>
+            </xpath>
+            <xpath expr="//field[@name='worked_hours']" position="replace"> 
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Override Action -->
+
+    <record id="hr_attendance.hr_attendance_action_graph" model="ir.actions.act_window">
+        <field name="name">Attendance Analysis</field>
+        <field name="res_model">hr.attendance</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">pivot,graph</field>
+        <field name="view_id"></field>  <!-- force empty -->
+        <field name="context">{
+            'search_default_month':1}
+        </field>
+    </record>
+    <record id="hr_attendance.hr_attendance_action_graph_filtered" model="ir.actions.act_window">
+        <field name="name">Attendance Analysis</field>
+        <field name="res_model">hr.attendance</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">pivot,graph</field>
+        <field name="context">{
+            'search_default_department_id': [active_id],
+            'default_department_id': active_id,
+            'search_default_month':1}
+        </field>
+    </record>
+
+    <record id="hr_attendance.hr_attendance_action" model="ir.actions.act_window">
+        <field name="name">Attendances</field>
+        <field name="res_model">hr.attendance</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{"search_default_month":1}</field>
+        <field name="search_view_id" ref="hr_attendance.hr_attendance_view_filter" />
+        <field name="help" type="html">
+            <p class="o_view_nocontent_empty_folder">
+                No attendance records found
+            </p><p>
+                The attendance records of your employees will be displayed here.
+            </p>
+        </field>
+    </record>
+</odoo>

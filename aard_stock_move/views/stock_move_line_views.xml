@@ -7,6 +7,10 @@
             <xpath expr="//tree" position="inside">
                 <field name="note"/>
             </xpath>
+            <xpath expr="//field[@name='qty_done']" position="after">
+                <field name="qty_available" string="Qty(On Hand)"/>
+                <!-- <aggregate name="qty_available" string="Qty(On Hand)" group_operator="avg" field="qty_available"/> -->
+            </xpath>
         </field>
     </record>
     <record id="view_move_line_form_inherti" model="ir.ui.view">

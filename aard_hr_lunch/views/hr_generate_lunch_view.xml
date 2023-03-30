@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+    <!-- explicit wizard view definition -->
+        <record model="ir.ui.view" id="aard_hr_lunch.generate_form">
+            <field name="name">aard_hr_employee_lunch_generate.form</field>
+            <field name="model">aard.hr.lunch.generate</field>
+            <field name="arch" type="xml">
+                <form  create="false" edit="false">
+                    <sheet>
+                        <group>
+                            <group>
+                                <!-- <field name="hr_department"/> -->
+                                <field name="employee_id" />
+                                <field name="contract_id" attrs="{'readonly': [('employee_id', '=', False)]}" domain="[('employee_id','=',employee_id),('date_start','&lt;=',date_start)]" context="{'default_employee_id': employee_id}"/>
+                            </group>
+                            <group>
+                                <field name="date_start"/>
+                                <field name="date_end" />
+                            </group>
+                        </group>
+                        <footer>
+                            <button string="Generate" name="action_generate_lunch" type="object"
+                                class="oe_highlight"/>
+                            <button string="Cancel" special="cancel"
+                                class="oe_link"/>
+                        </footer>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="aard_hr_lunch.generate_action_window">
+        <field name="name">Generate Lunch</field>
+        <field name="res_model">aard.hr.lunch.generate</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- menu item -->
+    <menuitem name="Generate Lunch"
+              id="aard_hr_lunch.menu_lunch_generate_id"
+              sequence= "2"
+              parent="lunch_management_main_submenu"
+              action="aard_hr_lunch.generate_action_window"
+              groups="hr.group_hr_manager"/>
+
+  </data>
+</odoo>

@@ -6,6 +6,6 @@
     'website': "",
     'category': 'Warehouse',
     'version': '1.0',
-    'depends': ['stock'],
+    'depends': ['stock', 'product'],
     'data': ['views/stock_move_line_views.xml']
 }

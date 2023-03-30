@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="aard_hr_overtime.overtime_for_office" model="aard.hr.overtime.rule">
+            <field name="lunch_rule_id" ref="lunch_rule_overtime_3h"/>
+        </record>
+        <record id="aard_hr_overtime.overtime_for_production" model="aard.hr.overtime.rule">
+            <field name="lunch_rule_id" ref="lunch_rule_overtime_3h"/>
+        </record>
+        <record id="aard_hr_overtime.overtime_for_production_shift_1" model="aard.hr.overtime.rule">
+            <field name="lunch_rule_id" ref="lunch_rule_overtime_3h"/>
+        </record>
+        <record id="aard_hr_overtime.overtime_for_production_shift_2" model="aard.hr.overtime.rule">
+            <field name="lunch_rule_id" ref="lunch_rule_overtime_3h"/>
+        </record>
+        <record id="aard_hr_overtime.overtime_sunday_for_office" model="aard.hr.overtime.rule">
+            <field name="lunch_rule_id" ref="lunch_rule_ot_sunday"/>
+        </record>
+        <record id="aard_hr_overtime.overtime_sunday_for_production" model="aard.hr.overtime.rule">
+            <field name="lunch_rule_id" ref="lunch_rule_ot_sunday"/>
+        </record>
+    </data>
+</odoo>
