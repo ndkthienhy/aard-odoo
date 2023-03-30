@@ -34,9 +34,9 @@
     'data': [
         'security/ir.model.access.csv',
         'security/hr_employee_shift_security.xml',
+        'views/hr_generate_shift_view.xml',
         'views/hr_employee_shift_view.xml',
         'views/hr_employee_contract_view.xml',
-        'views/hr_generate_shift_view.xml',
         'views/templates.xml',
         'data/shift_schedule_data.xml',
         'data/shift_resource_calendar_attendance_data.xml',
