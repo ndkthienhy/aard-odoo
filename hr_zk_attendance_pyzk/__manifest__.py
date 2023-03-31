@@ -24,7 +24,7 @@
     'author': '10 Orbits',
     'company': '10 Orbits',
     'website': "https://erp.10orbits.com",
-    'depends': ['base_setup', 'hr_attendance', 'aard_hr_attendance_validation', 'hr_employee_shift', 'hr'],
+    'depends': ['base_setup', 'hr_attendance', 'hr_aard_attendance_validation', 'hr_employee_shift', 'hr'],
     'data': [
         'security/ir.model.access.csv',
         'views/zk_machine_view.xml',

@@ -11,7 +11,7 @@
     'author': "Nguyen Duy Khanh",
     'company': 'Aardwolf Industries LLC',
     'website': "",
-    'depends': ['hr_employee_shift', 'hr_attendance', 'aard_hr_attendance_validation'],
+    'depends': ['hr_employee_shift', 'hr_attendance', 'hr_aard_attendance_validation'],
     'data': ['security/ir.model.access.csv',
              'security/hr_overtime_security.xml',
 

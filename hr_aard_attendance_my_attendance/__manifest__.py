@@ -9,7 +9,7 @@
     'author': "Nguyen Duy Khanh",
     'company': 'Aardwolf Industries LLC',
     'website': "",
-    'depends': ['hr_attendance', 'aard_hr_attendance_validation', 'aard_hr_lunch'],
+    'depends': ['hr_attendance', 'hr_aard_attendance_validation', 'hr_aard_lunch'],
     'data': [
         'views/hr_attendance_view.xml',
 
