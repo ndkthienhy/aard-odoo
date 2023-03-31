@@ -100,7 +100,8 @@
                 <field name="valid_worked_hours" type="measure"/>
                 <field name="attendance_days" type="measure"/>
             </xpath>
-            <xpath expr="//field[@name='worked_hours']" position="replace"> 
+            <xpath expr="//field[@name='worked_hours']" position="attributes"> 
+                <attribute name="invisible">0</attribute>
             </xpath>
         </field>
     </record>
