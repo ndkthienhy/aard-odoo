@@ -4,7 +4,7 @@
     <data noupdate="1">
         <record id='overtime_for_office' model='aard.hr.overtime.rule'>
             <field name="name">Overtime for Office</field>
-            <field name="company_id" ref="__export__.res_company_10_7f06dfe7"/>
+            <field name="company_id" ref="__export__.res_company_10_1f0cb18b"/>
             <field name="hour_start">17</field>
             <field name="hour_end">23.98333</field>
             <field name="minimum_ot_minute">60</field>
@@ -12,32 +12,32 @@
         </record>
         <record id='overtime_for_production' model='aard.hr.overtime.rule'>
             <field name="name">Overtime for Production</field>
-            <field name="company_id" ref="__export__.res_company_10_7f06dfe7"/>
+            <field name="company_id" ref="__export__.res_company_10_1f0cb18b"/>
             <field name="hour_start">17</field>
             <field name="hour_end">23.98333</field>
         </record>
         <record id='overtime_for_production_shift_1' model='aard.hr.overtime.rule'>
             <field name="name">Overtime for Production Shift 1</field>
-            <field name="company_id" ref="__export__.res_company_10_7f06dfe7"/>
+            <field name="company_id" ref="__export__.res_company_10_1f0cb18b"/>
             <field name="hour_start">14.5</field>
             <field name="hour_end">23.98333</field>
         </record>
         <record id='overtime_for_production_shift_2' model='aard.hr.overtime.rule'>
             <field name="name">Overtime for Production Shift 2</field>
-            <field name="company_id" ref="__export__.res_company_10_7f06dfe7"/>
+            <field name="company_id" ref="__export__.res_company_10_1f0cb18b"/>
             <field name="hour_start">8</field>
             <field name="hour_end">14</field>
         </record>
         <record id='overtime_sunday_for_office' model='aard.hr.overtime.rule'>
             <field name="name">Overtime Sunday for Office</field>
-            <field name="company_id" ref="__export__.res_company_10_7f06dfe7"/>
+            <field name="company_id" ref="__export__.res_company_10_1f0cb18b"/>
             <field name="hour_start">8</field>
             <field name="hour_end">23.98333</field>
             <field name="minimum_ot_minute">300</field>
         </record>
         <record id='overtime_sunday_for_production' model='aard.hr.overtime.rule'>
             <field name="name">Overtime Sunday for Production</field>
-            <field name="company_id" ref="__export__.res_company_10_7f06dfe7"/>
+            <field name="company_id" ref="__export__.res_company_10_1f0cb18b"/>
             <field name="hour_start">8</field>
             <field name="hour_end">23.98333</field>
             <field name="minimum_ot_minute">300</field>
