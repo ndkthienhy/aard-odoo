@@ -50,7 +50,7 @@
 			<record id="overtime_lunch_form" model="ir.ui.view">
 				<field name="name">aard.hr.overtime.rule.lunch</field>
 				<field name="model">aard.hr.overtime.rule</field>
-				<field name="inherit_id" ref="aard_hr_overtime.aard_overtime_rule_form"/>
+				<field name="inherit_id" ref="hr_aard_overtime.aard_overtime_rule_form"/>
 				<field name="arch" type="xml">
 					<xpath expr="//field[@name='name']" position="after">
 						<field name="lunch_rule_id"/>
