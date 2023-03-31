@@ -3,8 +3,8 @@
 <odoo>
     <data>
     <!-- explicit wizard view definition -->
-        <record model="ir.ui.view" id="aard_hr_lunch.generate_form">
-            <field name="name">aard_hr_employee_lunch_generate.form</field>
+        <record model="ir.ui.view" id="hr_aard_lunch.generate_form">
+            <field name="name">hr_aard_employee_lunch_generate.form</field>
             <field name="model">aard.hr.lunch.generate</field>
             <field name="arch" type="xml">
                 <form  create="false" edit="false">
@@ -33,7 +33,7 @@
         </record>
 
     <!-- actions opening views on models -->
-    <record model="ir.actions.act_window" id="aard_hr_lunch.generate_action_window">
+    <record model="ir.actions.act_window" id="hr_aard_lunch.generate_action_window">
         <field name="name">Generate Lunch</field>
         <field name="res_model">aard.hr.lunch.generate</field>
         <field name="view_mode">form</field>
@@ -42,10 +42,10 @@
 
     <!-- menu item -->
     <menuitem name="Generate Lunch"
-              id="aard_hr_lunch.menu_lunch_generate_id"
+              id="hr_aard_lunch.menu_lunch_generate_id"
               sequence= "2"
               parent="lunch_management_main_submenu"
-              action="aard_hr_lunch.generate_action_window"
+              action="hr_aard_lunch.generate_action_window"
               groups="hr.group_hr_manager"/>
 
   </data>
