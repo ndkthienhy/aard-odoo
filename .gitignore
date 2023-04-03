@@ -130,3 +130,5 @@ dmypy.json
 
 # macos files
 .DS_Store
+hr_aard_overtime/data/overtime_rule_data.xml
+hr_aard_lunch/data/lunch_rule_data.xml
