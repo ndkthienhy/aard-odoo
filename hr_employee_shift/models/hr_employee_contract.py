@@ -44,23 +44,23 @@ class HrSchedule(models.Model):
 
     @api.multi
     def write(self, vals):
-        # self._check_overlap(vals)
+        self._check_overlap(vals)
         return super(HrSchedule, self).write(vals)
 
     @api.model
     def create(self, vals):
-        # self._check_overlap(vals)
+        self._check_overlap(vals)
         return super(HrSchedule, self).create(vals)
 
     def _check_overlap(self, vals):
         if vals.get('start_date', False) and vals.get('end_date', False):
-            shifts = self.env['hr.shift.schedule'].search([('rel_hr_schedule', '=', vals.get('rel_hr_schedule'))])
-            for each in shifts:
-                if each != shifts[-1]:
-                    val_start_date = fields.Date.from_string(vals.get('start_date'))
-                    val_end_date = fields.Date.from_string(vals.get('end_date'))
-                    if each.end_date >= val_start_date or each.start_date >= val_start_date:
-                        raise Warning(_('The dates may not overlap with one another.'))
+            val_start_date = fields.Date.from_string(vals.get('start_date'))
+            val_end_date = fields.Date.from_string(vals.get('end_date'))
+            # shifts = self.env['hr.shift.schedule'].search([('rel_hr_schedule', '=', vals.get('rel_hr_schedule'))])
+            # for each in shifts:
+            #     if each != shifts[-1]:
+            #         if each.end_date >= val_start_date or each.start_date >= val_start_date:
+            #             raise Warning(_('The dates may not overlap with one another.'))
             if val_start_date > val_end_date:
                 raise Warning(_('Start date should be less than end date.'))
         return True
