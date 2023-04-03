@@ -203,12 +203,14 @@ class HrLunchAttendance(models.Model):
                 'date': punching_date,
                 'attendance_id': rec.id,
             }
-            hrlunch.create(lunch)
-            rec.lunch_created = True
+            if len(lunch) > 0:
+                hrlunch.create(lunch)
+                rec.lunch_created = True
 
-    @api.multi
-    def create(self, values):
-        sup = super(HrLunchAttendance, self).create(values)
-        self._generate_lunch()
+    @api.model
+    def create(self, vals):
+        if len(vals) > 0:
+            sup = super(HrLunchAttendance, self).create(vals)
+            self._generate_lunch()
 
-        return sup
+            return sup

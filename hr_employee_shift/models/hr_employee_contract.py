@@ -63,5 +63,4 @@ class HrSchedule(models.Model):
             #             raise Warning(_('The dates may not overlap with one another.'))
             if val_start_date > val_end_date:
                 raise Warning(_('Start date should be less than end date.'))
-        return True
 
