@@ -58,8 +58,8 @@
         <record id="hr_employee_shift.resource_calendar_security_84h_shift_1" model="resource.calendar">
             <field name="lunch_rule_id" ref="lunch_rule_security"/>
         </record>
-        <record id="hr_employee_shift.resource_calendar_security_84h_shift_2" model="resource.calendar">
+        <!-- <record id="hr_employee_shift.resource_calendar_security_84h_shift_2" model="resource.calendar">
             <field name="lunch_rule_id" ref="lunch_rule_security"/>
-        </record>
+        </record> -->
     </data>
 </odoo>
