@@ -78,7 +78,3 @@ class HrEmployeeShift(models.Model):
     #         if len(record) > 1:
     #             raise ValidationError("One record with same sequence is already active."
     #                                   "You can't activate more than one record  at a time")
-
-class ResourceCalendarAttendance(models.Model):
-    _inherit = "resource.calendar.attendance"
-    break_hours = fields.Float(string='Break Hours', compute='_compute_break_hours', default=0, readonly=True)

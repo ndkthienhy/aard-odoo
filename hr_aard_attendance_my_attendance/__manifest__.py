@@ -1,5 +1,5 @@
 {
-    'name': 'Aardwolf My Attendance',
+    'name': 'Aardwolf HR My Attendance',
     'version': '12.0.0.0.0.1',
     'summary': "Manage attendance for owner. Owner only show attendance self",
     'description': """

@@ -5,10 +5,12 @@
     'name': 'Aardwolf HR Employees Rule',
     'version': '12.0.0.1.1.1',
     'category': 'Human Resources',
+    'author': "Nguyen Duy Khanh",
+    'company': 'Aardwolf Industries LLC',
     'sequence': 751,
     'summary': 'Centralize employee security group',
     'description': "",
-    'website': '',
+    'website': 'https://www.toolrange.com.vn/',
     'depends': [
         'hr'
     ],
