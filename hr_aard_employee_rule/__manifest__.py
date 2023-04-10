@@ -12,7 +12,7 @@
     'description': "",
     'website': 'https://www.toolrange.com.vn/',
     'depends': [
-        'hr'
+        'hr', 'hr_contract'
     ],
     'data': [
         'security/hr_employee_security.xml',
