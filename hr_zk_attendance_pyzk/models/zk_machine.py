@@ -293,7 +293,7 @@ class ZkMachine(models.Model):
 
                         if atten_time != False and atten_time > tmp_zk_after_date:
                             local_tz = pytz.timezone(self.env.user.partner_id.tz or 'GMT')
-                            local_dt = local_tz.localize(atten_time, is_dst=None)
+                            local_dt = local_tz.localize(atten_time, is_dst=False)
                             utc_dt = local_dt.astimezone(pytz.utc)
                             utc_dt = utc_dt.strftime("%Y-%m-%d %H:%M:%S")
                             atten_time = datetime.strptime(
