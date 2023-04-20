@@ -6,7 +6,7 @@
         <field name="model">hr.attendance</field>
         <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
         <field name="arch" type="xml">
-            <tree string="Employee attendances">
+            <tree>
                 <field name="worked_hours" type="measure"/>
             </tree>
         </field>
@@ -17,7 +17,7 @@
         <field name="model">hr.attendance</field>
         <field name="inherit_id" ref="hr_attendance.hr_attendance_view_filter"/>
         <field name="arch" type="xml">
-            <search string="Hr Attendance Search">
+            <search>
                 <group expand="0" string="Group By">
                     <separator/>
                 	<filter name="date" string="Date" context="{'group_by':'check_in:day'}"/>
@@ -31,7 +31,7 @@
         <field name="name">zk.report.daily.attendance.search</field>
         <field name="model">zk.report.daily.attendance</field>
         <field name="arch" type="xml" >
-            <search string="Hr Attendance Search">
+            <search>
                 <filter icon="terp-stock_align_left_24" string="My Attendance" name="my_attendance" domain="[('name.user_id.id', '=', uid)]" />
                 <filter name="today" string="Today" domain="[('punching_time', '&gt;=', datetime.datetime.now().replace(hour=0, minute=0, second=0)),('punching_time', '&lt;=', datetime.datetime.now().replace(hour=23, minute=59, second=59))]" />
                 <filter string="Current Month" name="month" domain="[('punching_time', '&gt;=', datetime.datetime.now().strftime('%Y-%m-01'))]" />
