@@ -36,13 +36,13 @@ class HrGenerateShift(models.Model):
     end_date = fields.Date(string="End Date", required=True)
     company_id = fields.Many2one('res.company', string='Company')
     #Added by Nguyen Duy khanh
-    employee_id = fields.Many2one('hr.employee', string='Employee', required = True)
-    contract_id = fields.Many2one('hr.contract', string = 'Contract', required = True, related="employee_id.contract_id")
+    employee_id = fields.Many2many('hr.employee', 'rel_emp_shift', string='Employee', required = True)
+    # contract_id = fields.Many2many('hr.contract', string = 'Contract', required = True, related="employee_id.contract_id")
     resource_calendar_id = fields.Many2one('resource.calendar', string='Working Schedule', required = True)
     rotating_shift = fields.Boolean(string='Rotating Shift', default=False)
     rotating_resource_calendar = fields.Many2one('resource.calendar', string='Rotating Schedule')
-    rotating_employee_id = fields.Many2one('hr.employee', string='Rotating With')
-    rotating_contract = fields.Many2one('hr.contract', string = 'Rotating Contract')
+    rotating_employee_id = fields.Many2many('hr.employee', 'rel_rotating_emp_shift', string='Rotating With')
+    # rotating_contract = fields.Many2many('hr.contract', string = 'Rotating Contract')
 
     @api.constrains('start_date', 'end_date')
     def _constrains_date(self):
@@ -54,13 +54,13 @@ class HrGenerateShift(models.Model):
         if self.resource_calendar_id == self.rotating_resource_calendar:
             raise ValidationError(_('Rotating Work Schedule and Working Schedule are must different.'))
         
-    @api.constrains('employee_id')
-    def _constrains_employee_contract(self):
-        if self.employee_id == self.rotating_employee_id:
-            raise ValidationError(_('This employee have chosen'))
-        contracts = self.env['hr.contract'].search([('employee_id', '=', self.employee_id.id)])
-        if not contracts:
-            raise ValidationError(_('This employee have not any contract. Create one please'))
+    # @api.constrains('employee_id')
+    # def _constrains_employee_contract(self):
+    #     if self.employee_id == self.rotating_employee_id:
+    #         raise ValidationError(_('This employee have chosen'))
+    #     contracts = self.env['hr.contract'].search([('employee_id', '=', self.employee_id.id)])
+    #     if not contracts:
+    #         raise ValidationError(_('This employee have not any contract. Create one please'))
     
     @api.constrains('rotating_shift', 'start_date', 'end_date')
     def _constrains_rotating_shift_time(self):
@@ -71,28 +71,30 @@ class HrGenerateShift(models.Model):
             
     @api.constrains('end_date')
     def _constrains_end_date(self):
-        if self.contract_id.date_end and self.end_date and self.contract_id.date_end > self.end_date:
-            raise ValidationError(_('End date do not exceed end date of contract'))
+        if self.employee_id:
+            for employee in self.employee_id:
+                if employee.contract_id.date_end and self.end_date and employee.contract_id.date_end > self.end_date:
+                    raise ValidationError(_('End date do not exceed end date of contract'))
 
                     
-    @api.onchange('contract_id')
-    def onchange_contract(self):
-        if self.contract_id:
-            current_date = date.today()
-            if self.contract_id.date_start and current_date < self.contract_id.date_start:
-                self.start_date = self.contract_id.date_start
+    # @api.onchange('contract_id')
+    # def onchange_contract(self):
+    #     if self.contract_id:
+    #         current_date = date.today()
+    #         if self.contract_id.date_start and current_date < self.contract_id.date_start:
+    #             self.start_date = self.contract_id.date_start
 
-            if self.contract_id.date_end:
-                if self.contract_id.date_end > current_date:
-                    self.end_date = self.contract_id.date_end
-                else:
-                    self.end_date = current_date
-            else:
-                self.end_date = date(current_date.year , 12, 31)
+    #         if self.contract_id.date_end:
+    #             if self.contract_id.date_end > current_date:
+    #                 self.end_date = self.contract_id.date_end
+    #             else:
+    #                 self.end_date = current_date
+    #         else:
+    #             self.end_date = date(current_date.year , 12, 31)
         
-        if self.rotating_contract:
-            if self.rotating_contract.date_end and self.end_date and self.rotating_contract.date_end < self.end_date:
-                self.end_date = self.rotating_contract.date_end
+    #     if self.rotating_contract:
+    #         if self.rotating_contract.date_end and self.end_date and self.rotating_contract.date_end < self.end_date:
+    #             self.end_date = self.rotating_contract.date_end
 
     @api.onchange('employee_id')
     def onchange_employee(self):
@@ -102,11 +104,11 @@ class HrGenerateShift(models.Model):
             self.contract_id = ''
 
     
-    @api.onchange('rotating_contract')
-    def onchange_rotating_contract(self):
-        if self.rotating_contract:
-            if self.rotating_contract.date_end and self.end_date and self.rotating_contract.date_end < self.end_date:
-                self.end_date = self.rotating_contract.date_end
+    # @api.onchange('rotating_contract')
+    # def onchange_rotating_contract(self):
+    #     if self.rotating_contract:
+    #         if self.rotating_contract.date_end and self.end_date and self.rotating_contract.date_end < self.end_date:
+    #             self.end_date = self.rotating_contract.date_end
 
     @api.multi
     def _assign_shift_schedule(self, contract_id, start_date, end_date, shift_id):
@@ -178,6 +180,8 @@ class HrGenerateShift(models.Model):
         shift_id = self.resource_calendar_id.id
         rotating_shift = self.rotating_resource_calendar.id
         if self.employee_id:
-            self._rotating_shift(self.contract_id, sd, ed, shift_id, rotating_shift)
+            for employee in self.employee_id:
+                self._rotating_shift(employee.contract_id, sd, ed, shift_id, rotating_shift)
         if self.rotating_employee_id:
-            self._rotating_shift(self.rotating_contract, sd, ed, rotating_shift, shift_id)
+            for employ in self.rotating_employee_id:
+                self._rotating_shift(employ.contract_id, sd, ed, rotating_shift, shift_id)

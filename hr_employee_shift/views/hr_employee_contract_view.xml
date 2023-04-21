@@ -25,7 +25,7 @@
                 </xpath>
                 <xpath expr="//field[@name='state']" position="after">
                     <button string="Generate Shift" name="%(hr_employee_shift.generate_schedule_action_window)d" type="action" groups="hr.group_hr_user"
-                                class="oe_highlight" context="{'default_employee_id': employee_id, 'default_contract_id': id}"/>
+                                class="oe_highlight" context="{'employee_id': employee_id}"/>
                 </xpath>
             </field>
         </record>
