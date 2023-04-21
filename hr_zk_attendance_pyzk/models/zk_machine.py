@@ -292,20 +292,21 @@ class ZkMachine(models.Model):
                             tmp_zk_after_date = datetime.strptime(info.zk_after_date.strftime('%Y-%m-%d %H:%M:%S'),'%Y-%m-%d %H:%M:%S')
 
                         if atten_time != False and atten_time > tmp_zk_after_date:
-                            local_tz = pytz.timezone(self.env.user.partner_id.tz or 'GMT')
-                            local_dt = local_tz.localize(atten_time, is_dst=False)
-                            utc_dt = local_dt.astimezone(pytz.utc)
-                            utc_dt = utc_dt.strftime("%Y-%m-%d %H:%M:%S")
-                            atten_time = datetime.strptime(
-                                utc_dt, "%Y-%m-%d %H:%M:%S")
-                            atten_time = fields.Datetime.to_string(atten_time)
-
-                            tmp_atten_time = datetime.strptime(
-                                atten_time, "%Y-%m-%d %H:%M:%S")
                             
                             get_user_id = self.env['hr.employee'].search(
                                             [('device_id', '=', each.user_id)])
                             if get_user_id:
+                                local_tz = pytz.timezone(get_user_id.tz or self.env.user.partner_id.tz or 'GMT')
+                                local_dt = local_tz.localize(atten_time, is_dst=False)
+                                utc_dt = local_dt.astimezone(pytz.utc)
+                                utc_dt = utc_dt.strftime("%Y-%m-%d %H:%M:%S")
+                                atten_time = datetime.strptime(
+                                    utc_dt, "%Y-%m-%d %H:%M:%S")
+                                atten_time = fields.Datetime.to_string(atten_time)
+
+                                tmp_atten_time = datetime.strptime(
+                                atten_time, "%Y-%m-%d %H:%M:%S")
+
                                 duplicate_atten_ids = zk_attendance.search(
                                     [('device_id', '=', each.user_id), ('punching_time', '=', atten_time)])
                                 if duplicate_atten_ids:
