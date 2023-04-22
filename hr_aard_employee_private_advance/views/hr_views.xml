@@ -43,7 +43,7 @@
             <field name="model">hr.employee</field>
             <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='name']" position="after">
+                <xpath expr="//strong[hasclass('o_kanban_record_title')]" position="after">
                     <field name="employee_code"/>
                 </xpath>
             </field>
