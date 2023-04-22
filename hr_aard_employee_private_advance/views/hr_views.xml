@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Employee -->
+        <record id="view_employee_form_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='identification_id']" position="after">
+                    <field name="id_issue_date"/>
+                    <field name="id_expiry_date"/>
+                    <field name="place_of_issue"/>
+                </xpath>
+                <xpath expr="//field[@name='address_home_id']" position="after">
+                    <field name="permanent_address"/>
+                </xpath>
+                <xpath expr="//field[@name='certificate']" position="after">
+                    <field name="level_edu"/>
+                </xpath>
+                <xpath expr="//field[@name='address_id']" position="before">
+                    <field name="employee_code"/>
+                </xpath>
+                <xpath expr="//page[@name='personal_information']/group/group" position="inside">
+                    <field name="personal_tax_id"/>
+                    <field name="ssnid"/>
+                    <field name="sinid"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_employee_tree_inherit" model="ir.ui.view">
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="employee_code"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="hr_kanban_view_employees_inherit" model="ir.ui.view">
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="employee_code"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
