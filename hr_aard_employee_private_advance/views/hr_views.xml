@@ -8,9 +8,9 @@
             <field name="inherit_id" ref="hr.view_employee_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='identification_id']" position="after">
-                    <field name="id_issue_date"/>
-                    <field name="id_expiry_date"/>
-                    <field name="place_of_issue"/>
+                    <field name="id_issue_date" attrs="{'invisible': [('identification_id', 'in', ['null', False])]}"/>
+                    <!-- <field name="id_expiry_date"/> -->
+                    <field name="place_of_issue" attrs="{'invisible': [('identification_id', 'in', ['null', False])]}"/>
                 </xpath>
                 <xpath expr="//field[@name='address_home_id']" position="after">
                     <field name="permanent_address"/>
@@ -25,6 +25,9 @@
                     <field name="personal_tax_id"/>
                     <field name="ssnid"/>
                     <field name="sinid"/>
+                </xpath>
+                <xpath expr="//field[@name='children']" position="after">
+                    <field name="other_dependant"/>
                 </xpath>
             </field>
         </record>

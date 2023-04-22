@@ -15,7 +15,7 @@ class PrivateInfoEmployee(models.Model):
     # required on the resource, make sure required="True" set in the view
     employee_code = fields.Char('Employee Code', groups="hr.group_hr_user")
     id_issue_date = fields.Date(string="Date of issue", groups="hr.group_hr_user")
-    id_expiry_date = fields.Date('Expiry Date', groups="hr.group_hr_user")
+    # id_expiry_date = fields.Date('Expiry Date', groups="hr.group_hr_user")
     place_of_issue = fields.Char('Place of issue', groups="hr.group_hr_user")
     other_dependant = fields.Integer(string='Grantee', groups="hr.group_hr_user")
     personal_tax_id = fields.Char('Personal Tax ID', groups="hr.group_hr_user")
