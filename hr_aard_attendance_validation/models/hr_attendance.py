@@ -13,11 +13,11 @@ class HrAttendance(models.Model):
 
     valid_check_in = fields.Datetime(string='Valid Check-in',compute='_compute_valid_check_in', readonly=True, store=True)
     valid_check_out = fields.Datetime(string='Valid Check-out',compute='_compute_valid_check_out', readonly=True, store=True)
-    late_attendance_hours = fields.Float(string='Late', compute='_compute_late_attendance_hours', default=0, readonly=True)
-    early_leave_hours  = fields.Float(string='Early', compute='_compute_early_leave_hours', default=0, readonly=True)
+    late_attendance_hours = fields.Float(string='Late', compute='_compute_late_attendance_hours', default=0, readonly=True, store=True)
+    early_leave_hours  = fields.Float(string='Early', compute='_compute_early_leave_hours', default=0, readonly=True, store=True)
     valid_worked_hours  = fields.Float(string='Att Hours', compute='_compute_valid_worked_hours', default=0, readonly=True, store=True)
     attendance_days  = fields.Float(string='Attendance Days', compute='_compute_attendance_days', default=0, readonly=True, store=True)
-    resource_calendar_id = fields.Many2one('resource.calendar', compute='_compute_shift', string='Working Schedule', auto_join=True)
+    resource_calendar_id = fields.Many2one('resource.calendar', compute='_compute_shift', string='Working Schedule', auto_join=True, store=True)
 
     def _get_config_late_checkin(self):
         return self.env['ir.config_parameter'].sudo().get_param('attendance.allow_late_checkin') and self.env.user.company_id.minute_late_checkin or 0
@@ -34,7 +34,7 @@ class HrAttendance(models.Model):
                         if shift_schedule.start_date <= date_day and shift_schedule.end_date >= date_day:
                             return shift_schedule.hr_shift
 
-    @api.depends('check_in')
+    @api.depends('check_in', 'employee_id.resource_calendar_id', 'employee_id.contract_id.resource_calendar_id', 'employee_id.contract_id.shift_schedule.hr_shift')
     def _compute_shift(self):
         for attendance in self:
             if attendance.check_in:
@@ -165,7 +165,7 @@ class HrAttendance(models.Model):
                     early_leave_hours = self._apply_block_minute(early_leave.total_seconds()) / 3600
                     attendance.early_leave_hours = early_leave_hours
 
-    @api.depends('check_in', 'check_out', 'resource_calendar_id')
+    @api.depends('valid_check_in', 'valid_check_out', 'resource_calendar_id')
     def _compute_valid_worked_hours(self):
         
         for attendance in self:
@@ -183,7 +183,7 @@ class HrAttendance(models.Model):
                 if total_deducted_hours < total_worked_hours:
                     attendance.valid_worked_hours = total_worked_hours - total_deducted_hours
 
-    @api.depends('check_in', 'check_out', 'valid_worked_hours')
+    @api.depends('valid_worked_hours', 'resource_calendar_id')
     def _compute_attendance_days(self):
         
         for attendance in self:
