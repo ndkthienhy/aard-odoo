@@ -19,16 +19,18 @@ class HrOvertimeAttendance(models.Model):
     @api.depends('overtime_id.overtime_hours')
     def _compute_ot_normal(self):
         for record in self:
-            wd = record.overtime_id.ot_date.weekday()
-            if wd != 6:
-                record.overtime_hours = record.overtime_id.overtime_hours
+            if record.overtime_id.ot_date:
+                wd = record.overtime_id.ot_date.weekday()
+                if wd != 6:
+                    record.overtime_hours = record.overtime_id.overtime_hours
 
     @api.depends('overtime_id.overtime_hours')
     def _compute_ot_sunday(self):
         for record in self:
-            wd = record.overtime_id.ot_date.weekday()
-            if wd == 6:
-                record.sunday_overtime_hours = record.overtime_id.overtime_hours
+            if record.overtime_id.ot_date:
+                wd = record.overtime_id.ot_date.weekday()
+                if wd == 6:
+                    record.sunday_overtime_hours = record.overtime_id.overtime_hours
 
     @api.onchange('check_in', 'check_out')
     def prevent_modify(self):
