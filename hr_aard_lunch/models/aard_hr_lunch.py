@@ -82,10 +82,12 @@ class HrLunch(models.Model):
                 number_ot_meal = 0
 
                 if record.total_working_hours and record.lunch_rule_id.minimum_total_hours:
-                    number_meal = floor(record.total_working_hours/record.lunch_rule_id.minimum_total_hours)
+                    #add to 5 minute for round
+                    number_meal = floor((record.total_working_hours + float(5/60))/record.lunch_rule_id.minimum_total_hours)
 
                 if record.total_overtime_hours and record.lunch_overtime_rule_id.minimum_total_hours:
-                    number_ot_meal = floor(record.total_overtime_hours/record.lunch_overtime_rule_id.minimum_total_hours)
+                    #add to 5 minute for round
+                    number_ot_meal = floor((record.total_overtime_hours + float(5/60))/record.lunch_overtime_rule_id.minimum_total_hours)
 
                 total_meal = number_meal * record.lunch_rule_id.number_meal + number_ot_meal * record.lunch_overtime_rule_id.number_meal
                 record.total_meal = total_meal
