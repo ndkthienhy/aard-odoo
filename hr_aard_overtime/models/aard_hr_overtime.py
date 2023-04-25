@@ -27,7 +27,7 @@ class HrOvertimeAttendance(models.Model):
     @api.depends('overtime_id.overtime_hours')
     def _compute_ot_sunday(self):
         for record in self:
-            if record.overtime_id.ot_date != False:
+            if isinstance(record.overtime_id.ot_date, date):
                 wd = record.overtime_id.ot_date.weekday()
                 if wd == 6:
                     record.sunday_overtime_hours = record.overtime_id.overtime_hours
