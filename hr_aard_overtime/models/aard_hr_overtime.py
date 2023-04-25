@@ -13,8 +13,23 @@ class HrOvertimeAttendance(models.Model):
     _inherit = "hr.attendance"
 
     overtime_id = fields.One2many('aard.hr.overtime', 'attendance_id', string='Overtime')
-    overtime_hours = fields.Float('Overtime Hours', related='overtime_id.overtime_hours', store=True, readonly=True)
-# If date of attendance has
+    overtime_hours = fields.Float('OT Hours (1.5)', compute='_compute_ot_normal', store=True, readonly=True)
+    sunday_overtime_hours = fields.Float('OT Hours (2.0)', compute='_compute_ot_sunday', store=True, readonly=True)
+    
+    @api.depends('overtime_id.overtime_hours')
+    def _compute_ot_normal(self):
+        for record in self:
+            wd = record.overtime_id.ot_date.weekday()
+            if wd != 6:
+                record.overtime_hours = record.overtime_id.overtime_hours
+
+    @api.depends('overtime_id.overtime_hours')
+    def _compute_ot_sunday(self):
+        for record in self:
+            wd = record.overtime_id.ot_date.weekday()
+            if wd == 6:
+                record.sunday_overtime_hours = record.overtime_id.overtime_hours
+
     @api.onchange('check_in', 'check_out')
     def prevent_modify(self):
         self.ensure_one()

@@ -19,10 +19,10 @@ class HrAttendance(models.Model):
     attendance_days  = fields.Float(string='Attendance Days', compute='_compute_attendance_days', default=0, readonly=True, store=True)
     resource_calendar_id = fields.Many2one('resource.calendar', compute='_compute_shift', string='Working Schedule', auto_join=True, store=True)
 
-    def _get_config_late_checkin(self):
-        return self.env['ir.config_parameter'].sudo().get_param('attendance.allow_late_checkin') and self.env.user.company_id.minute_late_checkin or 0
-    def _get_config_early_checkout(self):
-        return self.env['ir.config_parameter'].sudo().get_param('attendance.allow_early_checkout') and self.env.user.company_id.minute_early_checkout or 0
+    def _get_config_late_checkin(self, att):
+        return self.env['ir.config_parameter'].sudo().get_param('attendance.allow_late_checkin') and self.env.user.company_id.minute_late_checkin or att.company_id.minute_late_checkin or 0
+    def _get_config_early_checkout(self, att):
+        return self.env['ir.config_parameter'].sudo().get_param('attendance.allow_early_checkout') and self.env.user.company_id.minute_early_checkout or att.company_id.minute_early_checkout or 0
 
     @api.multi
     def _get_resource_calendar(self, employ_id, date_day):
@@ -38,7 +38,11 @@ class HrAttendance(models.Model):
     def _compute_shift(self):
         for attendance in self:
             if attendance.check_in:
-                checkin = fields.Datetime.context_timestamp(self, fields.Datetime.from_string(attendance.check_in))
+
+                # Timezone have get by order: contract, employee.
+                tz = attendance.employee_id.tz
+                tzinfo = timezone(tz)
+                checkin = attendance.check_in.astimezone(tzinfo)
                 checkin_date = checkin.date()
             # elif attendance.check_out:
                 # checkin_date = attendance.check_out.date()
@@ -62,12 +66,16 @@ class HrAttendance(models.Model):
     @api.multi
     def _get_valid_attendace(self, attendance, punching_type = 'checkin'):
         attendance.ensure_one()
+
+        # Timezone have get by order: calendar, contract, employee.
+        tz = attendance.resource_calendar_id.tz or attendance.employee_id.tz
+        tzinfo = timezone(tz)
         
         punching_datetime = attendance.check_in
         if punching_type == 'checkout':
             punching_datetime = attendance.check_out
 
-        dt_tz = fields.Datetime.context_timestamp(self, fields.Datetime.from_string(punching_datetime))
+        dt_tz = punching_datetime.astimezone(tzinfo)
         punching_date = dt_tz.date()
         punching_time = dt_tz.time()
         checkin_dayofweek = punching_date.weekday()
@@ -108,12 +116,14 @@ class HrAttendance(models.Model):
             dt_valid = datetime.combine(punching_date, ck_time)
             return dt_valid - tz_td
                    
-    def _get_valid_attendance_allowed(self, dt_attendance, ischeckin = True):
+    def _get_valid_attendance_allowed(self, attendance, ischeckin = True):
         allowed_minute = 0
-        if ischeckin and self._get_config_late_checkin():
-            allowed_minute =  int(self._get_config_late_checkin())
-        elif not ischeckin and self._get_config_early_checkout():
-            allowed_minute = -int(self._get_config_early_checkout())
+        dt_attendance = attendance.valid_check_in
+        if ischeckin and self._get_config_late_checkin(attendance):
+            allowed_minute =  int(self._get_config_late_checkin(attendance))
+        elif not ischeckin and self._get_config_early_checkout(attendance):
+            allowed_minute = -int(self._get_config_early_checkout(attendance))
+            dt_attendance = attendance.valid_check_out
 
         return dt_attendance + timedelta(minutes=allowed_minute)
     
@@ -146,7 +156,7 @@ class HrAttendance(models.Model):
         for attendance in self:
             if attendance.check_in and attendance.valid_check_in:
                 # include minutes of late coming
-                valid_checkin = self._get_valid_attendance_allowed(attendance.valid_check_in)
+                valid_checkin = self._get_valid_attendance_allowed(attendance)
                 if attendance.check_in.replace(second=0) > valid_checkin:
                     # late = real checkin - schedule working checkin
                     late_attendance = attendance.check_in - attendance.valid_check_in
@@ -158,7 +168,7 @@ class HrAttendance(models.Model):
         for attendance in self:
             if attendance.check_out and attendance.valid_check_out:
                 # include minutes of early
-                valid_ck_out = self._get_valid_attendance_allowed(attendance.valid_check_out, False)
+                valid_ck_out = self._get_valid_attendance_allowed(attendance, False)
                 if attendance.check_out < valid_ck_out:
                     # minute = schedule working checkout - real checkout
                     early_leave = attendance.valid_check_out - attendance.check_out
