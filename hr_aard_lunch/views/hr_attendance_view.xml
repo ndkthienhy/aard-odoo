@@ -5,6 +5,7 @@
     <record id="view_attendance_tree_inherit_lunch" model="ir.ui.view">
         <field name="model">hr.attendance</field>
         <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
+        <field name="priority" eval="70"/>
         <field name="arch" type="xml">
             <xpath expr="//tree" position="inside">
                 <field name="total_meal" sum="subtotal meal"/>
@@ -15,6 +16,7 @@
     <record id="hr_attendance_view_pivot_inherit_lunch" model="ir.ui.view">
         <field name="model">hr.attendance</field>
         <field name="inherit_id" ref="hr_attendance.hr_attendance_view_pivot"/>
+        <field name="priority" eval="70"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='worked_hours']" position="after"> 
                 <field name="total_meal" type="measure"/>
@@ -25,6 +27,7 @@
     <record id="hr_attendance_view_graph_inherit_lunch" model="ir.ui.view">
         <field name="model">hr.attendance</field>
         <field name="inherit_id" ref="hr_attendance.hr_attendance_view_graph"/>
+        <field name="priority" eval="70"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='worked_hours']" position="after"> 
                 <field name="total_meal" type="measure"/>

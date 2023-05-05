@@ -6,6 +6,7 @@
     <record id="view_attendance_tree_inherit_attendance_validation" model="ir.ui.view">
         <field name="model">hr.attendance</field>
         <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
+        <field name="priority" eval="50"/>
         <field name="arch" type="xml">
             <xpath expr="//tree/field[@name='check_out']" position="after">
                 <!-- <field name="valid_check_in"/>
@@ -84,6 +85,7 @@
     <record id="hr_attendance_view_pivot_inherit" model="ir.ui.view">
         <field name="model">hr.attendance</field>
         <field name="inherit_id" ref="hr_attendance.hr_attendance_view_pivot"/>
+        <field name="priority" eval="50"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='worked_hours']" position="after"> 
                 <field name="valid_worked_hours" type="measure"/>
@@ -95,6 +97,7 @@
     <record id="hr_attendance_view_graph_inherit" model="ir.ui.view">
         <field name="model">hr.attendance</field>
         <field name="inherit_id" ref="hr_attendance.hr_attendance_view_graph"/>
+        <field name="priority" eval="50"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='worked_hours']" position="after"> 
                 <field name="valid_worked_hours" type="measure"/>

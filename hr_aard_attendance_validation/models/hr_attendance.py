@@ -58,7 +58,7 @@ class HrAttendance(models.Model):
                                 rc = shift_schedule.hr_shift.id
                     else:
                         rc = contract.resource_calendar_id
-                else:
+                if not rc:
                     rc = attendance.employee_id.resource_calendar_id
                 
                 attendance.resource_calendar_id = rc
