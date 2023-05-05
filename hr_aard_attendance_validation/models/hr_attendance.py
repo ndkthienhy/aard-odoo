@@ -56,9 +56,9 @@ class HrAttendance(models.Model):
                         for shift_schedule in contract.shift_schedule:
                             if shift_schedule.start_date <= checkin_date and shift_schedule.end_date >= checkin_date:
                                 rc = shift_schedule.hr_shift.id
-                    else:
+                    if not rc and contract.resource_calendar_id:
                         rc = contract.resource_calendar_id
-                if not rc:
+                if not rc and attendance.employee_id.resource_calendar_id:
                     rc = attendance.employee_id.resource_calendar_id
                 
                 attendance.resource_calendar_id = rc
