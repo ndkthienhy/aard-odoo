@@ -1,7 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_aard_hr_overtime_attendance_user,aard.hr.overtime.attendance.user,model_aard_hr_overtime,hr_attendance.group_hr_attendance_user,1,1,1,1
-access_aard_hr_overtime_plan_attendance_user,aard.hr.overtime.plan.attendance.user,model_aard_hr_overtime_plan,hr_attendance.group_hr_attendance_user,1,1,1,1
-access_aard_hr_overtime_rule_attendance_user,aard.overtime.rule.hr.attendance.user,model_aard_hr_overtime_rule,hr_attendance.group_hr_attendance_user,1,1,1,1
-access_aard_hr_overtime_attendance,aard.hr.overtime.attendance,model_aard_hr_overtime,hr_attendance.group_hr_attendance,1,0,0,0
-access_aard_hr_overtime_plan_attendance,aard.hr.overtime.plan.attendance,model_aard_hr_overtime_plan,hr_attendance.group_hr_attendance,1,1,1,1
-access_aard_hr_overtime_rule_attendance,aard.overtime.rule.hr.attendance,model_aard_hr_overtime_rule,hr_attendance.group_hr_attendance,1,0,0,0
