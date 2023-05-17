@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<odoo noupdate="1">
-	<record id="zk_attendance_machine_1" model="zk.machine">
-		<field name="name">192.168.1.201</field>
-	</record>
-</odoo>
