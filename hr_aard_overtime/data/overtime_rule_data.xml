@@ -68,5 +68,5 @@
         <record id="hr_employee_shift.resource_calendar_production_48h_shift_3" model="resource.calendar">
             <field name="sunday_overtime_rule_id" ref="overtime_sunday_for_production"/>
         </record>
-    </data>
+    </data> 
 </odoo>
