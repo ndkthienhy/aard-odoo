@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data noupdate="1">
+        <record id='overtime_for_office' model='aard.hr.overtime.rule'>
+            <field name="name">Overtime for Office</field>
+            <field name="company_id" ref="__export__.res_company_10_7f06dfe7"/>
+            <field name="hour_start">17</field>
+            <field name="hour_end">23.98333</field>
+            <field name="minimum_ot_minute">60</field>
+            <field name="block_minutes">30</field>
+        </record>
+        <record id='overtime_for_production' model='aard.hr.overtime.rule'>
+            <field name="name">Overtime for Production</field>
+            <field name="company_id" ref="__export__.res_company_10_7f06dfe7"/>
+            <field name="hour_start">17</field>
+            <field name="hour_end">23.98333</field>
+        </record>
+        <record id='overtime_for_production_shift_1' model='aard.hr.overtime.rule'>
+            <field name="name">Overtime for Production Shift 1</field>
+            <field name="company_id" ref="__export__.res_company_10_7f06dfe7"/>
+            <field name="hour_start">14.5</field>
+            <field name="hour_end">23.98333</field>
+        </record>
+        <record id='overtime_for_production_shift_2' model='aard.hr.overtime.rule'>
+            <field name="name">Overtime for Production Shift 2</field>
+            <field name="company_id" ref="__export__.res_company_10_7f06dfe7"/>
+            <field name="hour_start">8</field>
+            <field name="hour_end">14</field>
+        </record>
+        <record id='overtime_sunday_for_office' model='aard.hr.overtime.rule'>
+            <field name="name">Overtime Sunday for Office</field>
+            <field name="company_id" ref="__export__.res_company_10_7f06dfe7"/>
+            <field name="hour_start">8</field>
+            <field name="hour_end">23.98333</field>
+            <field name="minimum_ot_minute">300</field>
+        </record>
+        <record id='overtime_sunday_for_production' model='aard.hr.overtime.rule'>
+            <field name="name">Overtime Sunday for Production</field>
+            <field name="company_id" ref="__export__.res_company_10_7f06dfe7"/>
+            <field name="hour_start">8</field>
+            <field name="hour_end">23.98333</field>
+            <field name="minimum_ot_minute">300</field>
+            <field name="maximum_leave_day">2</field>
+        </record>
+
+        <record id="hr_employee_shift.resource_calendar_office_40h" model="resource.calendar">
+            <field name="overtime_rule_id" ref="overtime_for_office"/>
+            <field name="sunday_overtime_rule_id" ref="overtime_sunday_for_office"/>
+        </record>
+        <record id="hr_employee_shift.resource_calendar_office_48h" model="resource.calendar">
+            <field name="overtime_rule_id" ref="overtime_for_office"/>
+            <field name="sunday_overtime_rule_id" ref="overtime_sunday_for_office"/>
+        </record>
+
+        <record id="hr_employee_shift.resource_calendar_production_48h" model="resource.calendar">
+            <field name="overtime_rule_id" ref="overtime_for_production"/>
+            <field name="sunday_overtime_rule_id" ref="overtime_sunday_for_production"/>
+        </record>
+        <record id="hr_employee_shift.resource_calendar_production_48h_shift_1" model="resource.calendar">
+            <field name="overtime_rule_id" ref="overtime_for_production_shift_1"/>
+            <field name="sunday_overtime_rule_id" ref="overtime_sunday_for_production"/>
+        </record>
+        <record id="hr_employee_shift.resource_calendar_production_48h_shift_2" model="resource.calendar">
+            <field name="overtime_rule_id" ref="overtime_for_production_shift_2"/>
+            <field name="sunday_overtime_rule_id" ref="overtime_sunday_for_production"/>
+        </record>
+        <record id="hr_employee_shift.resource_calendar_production_48h_shift_3" model="resource.calendar">
+            <field name="sunday_overtime_rule_id" ref="overtime_sunday_for_production"/>
+        </record>
+    </data>
+</odoo>

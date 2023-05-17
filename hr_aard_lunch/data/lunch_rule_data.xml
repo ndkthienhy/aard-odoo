@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data noupdate="1">        
+        <record id='lunch_rule_working_hour' model='aard.hr.lunch.rule'>
+            <field name="name">Lunch for Working Hour</field>
+            <field name="company_id" ref="__export__.res_company_10_7f06dfe7"/>
+            <field name="minimum_total_hours">5</field>
+            <field name="number_meal">1</field>
+        </record>
+
+        <record id='lunch_rule_overtime_3h' model='aard.hr.lunch.rule'>
+            <field name="name">Lunch for Overtime 3h</field>
+            <field name="company_id" ref="__export__.res_company_10_7f06dfe7"/>
+            <field name="minimum_total_hours">3</field>
+            <field name="number_meal">1</field>
+        </record>
+
+        <record id='lunch_rule_overtime_2h' model='aard.hr.lunch.rule'>
+            <field name="name">Lunch for Overtime 2h</field>
+            <field name="company_id" ref="__export__.res_company_10_7f06dfe7"/>
+            <field name="minimum_total_hours">2</field>
+            <field name="number_meal">1</field>
+        </record>
+
+        <record id='lunch_rule_ot_sunday' model='aard.hr.lunch.rule'>
+            <field name="name">Lunch for OT Sunday</field>
+            <field name="company_id" ref="__export__.res_company_10_7f06dfe7"/>
+            <field name="minimum_total_hours">5</field>
+            <field name="number_meal">1</field>
+        </record>
+
+        <record id='lunch_rule_security' model='aard.hr.lunch.rule'>
+            <field name="name">Lunch for Security</field>
+            <field name="company_id" ref="__export__.res_company_10_7f06dfe7"/>
+            <field name="minimum_total_hours">6</field>
+            <field name="number_meal">1</field>
+        </record>
+
+        <record id="hr_employee_shift.resource_calendar_office_40h" model="resource.calendar">
+            <field name="lunch_rule_id" ref="lunch_rule_working_hour"/>
+        </record>
+        <record id="hr_employee_shift.resource_calendar_office_48h" model="resource.calendar">
+            <field name="lunch_rule_id" ref="lunch_rule_working_hour"/>
+        </record>
+        <record id="hr_employee_shift.resource_calendar_production_48h" model="resource.calendar">
+            <field name="lunch_rule_id" ref="lunch_rule_working_hour"/>
+        </record>
+        <record id="hr_employee_shift.resource_calendar_production_48h_shift_1" model="resource.calendar">
+            <field name="lunch_rule_id" ref="lunch_rule_working_hour"/>
+        </record>
+        <record id="hr_employee_shift.resource_calendar_production_48h_shift_2" model="resource.calendar">
+            <field name="lunch_rule_id" ref="lunch_rule_working_hour"/>
+        </record>
+        <record id="hr_employee_shift.resource_calendar_production_48h_shift_3" model="resource.calendar">
+            <field name="lunch_rule_id" ref="lunch_rule_working_hour"/>
+        </record>
+        <record id="hr_employee_shift.resource_calendar_security_84h_shift_1" model="resource.calendar">
+            <field name="lunch_rule_id" ref="lunch_rule_security"/>
+        </record>
+        <!-- <record id="hr_employee_shift.resource_calendar_security_84h_shift_2" model="resource.calendar">
+            <field name="lunch_rule_id" ref="lunch_rule_security"/>
+        </record> -->
+    </data>
+</odoo>
