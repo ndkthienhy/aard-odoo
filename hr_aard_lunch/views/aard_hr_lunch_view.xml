@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem
+            id= "lunch_management_main_submenu"
+            parent= "hr_attendance.menu_hr_attendance_settings"
+            sequence= "2"
+            name= "Lunch"
+            />
+		<!-- Override Configuration menu on Attendance Root -->
+		<menuitem id="hr_attendance.menu_hr_attendance_settings_ovverride" name="Setting" parent="hr_attendance.menu_hr_attendance_settings"
+					sequence="1" action="hr_attendance.action_hr_attendance_settings" groups="hr_attendance.group_hr_attendance_user"/> 
+            
+        <record id="aard_lunch_tree" model="ir.ui.view">
+            <field name="name">aard.hr.lunch.tree</field>
+            <field name="model">aard.hr.lunch</field>
+            <field name="arch" type="xml">
+                <tree string="Lunch Manager">
+                	<field name="employee_id"/>
+					<field name="date"/>
+					<field name="total_working_hours"/>
+					<field name="total_overtime_hours"/>
+					<field name="total_meal" sum="Total Meal" string="Number of Meal"/>
+					<field name="lunch_rule_id" groups="hr_attendance.group_hr_attendance_user"/>
+                    <field name="lunch_overtime_rule_id" groups="hr_attendance.group_hr_attendance_user"/>
+                </tree>
+            </field>
+         </record>
+         
+		 <record id="aard_lunch_form" model="ir.ui.view">
+		   <field name="name">aard.hr.lunch.form</field>
+		   <field name="model">aard.hr.lunch</field>
+		   <field name="arch" type="xml">
+			   <form string="Lunch" create="false" edit="false">
+				   <sheet>
+						<div class="oe_button_box" name="button_box">
+							<button name="action_view_attendance" type="object" 
+							class="oe_stat_button" icon="fa-user" string="Attendance">
+							</button>
+						</div>	
+					   <group>
+						   <group>
+							   <field name="employee_id" required="True"/>
+							   <field name="company_id"/>
+							   <field name="lunch_rule_id" groups="hr_attendance.group_hr_attendance_user"/>
+							   <field name="lunch_overtime_rule_id" groups="hr_attendance.group_hr_attendance_user"/>
+						   </group>
+						   <group>
+								<field name="date"/>
+								<field name="total_working_hours"/>
+								<field name="total_overtime_hours"/>
+								<field name="total_meal"/>
+						   </group>
+					   </group>
+				   </sheet>
+			  </form>
+		   </field>
+		 </record>
+         
+         <record id="aard_lunch_management_search" model="ir.ui.view">
+            <field name="name">aard.hr.lunch.search</field>
+            <field name="model">aard.hr.lunch</field>
+            <field name="arch" type="xml">
+                <search string="Lunch">
+                	<field name="employee_id"/>
+					<filter string="My Lunch" name="mylunch" domain="[('employee_id.user_id.id', '=', uid)]" />
+					<separator/>
+					<filter name="date_filter" string="Date" date="date"/>       
+					<filter string="Current Month" name="month" domain="[('date', '&gt;=', datetime.datetime.now().strftime('%Y-%m-01'))]" />
+                	<separator/>
+                	 <group expand="1" string="Group By">
+                	 	<filter string="Employee" name="employee_id" context="{'group_by':'employee_id'}"/>
+                	 </group>
+                </search>
+            </field>
+         </record>
+          
+          <record id="action_lunch_management" model="ir.actions.act_window">
+	            <field name="name">Lunch</field>
+	            <field name="type">ir.actions.act_window</field>
+	            <field name="res_model">aard.hr.lunch</field>
+				<field name="view_type">form</field>
+	            <field name="view_mode">tree,form</field>
+				<field name="context">{"search_default_month":1}</field>
+	        </record>
+	        
+	        <menuitem action="action_lunch_management" name="View Lunch"
+	            id="menu_action_lunch_management" parent="lunch_management_main_submenu"
+	            sequence="2"/>
+	</data>
+</odoo>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>        
+		<menuitem
+			id= "menu_overtime_configuration"
+			parent= "hr_overtime_menu_root"
+			sequence= "30"
+			name= "Configuration"
+			groups="hr_attendance.group_hr_attendance_user"
+			/> 
+            
+        <record id="aard_overtime_rule_management_tree" model="ir.ui.view">
+            <field name="name">aard.hr.overtime.rule.tree</field>
+            <field name="model">aard.hr.overtime.rule</field>
+            <field name="arch" type="xml">
+                <tree string="Overtime Rules">
+					<field name="name"/>
+                	<field name="hour_start" widget="float_time"/>
+                	<field name="hour_end" widget="float_time"/>
+                	<field name="minimum_ot_minute"/>
+                    <field name="block_minutes"/>
+                    <field name="maximum_leave_day"/>
+                </tree>
+            </field>
+         </record>
+         
+          <record id="aard_overtime_rule_form" model="ir.ui.view">
+            <field name="name">aard.hr.overtime.rule.form</field>
+            <field name="model">aard.hr.overtime.rule</field>
+            <field name="arch" type="xml">
+                <form string="Overtime Rule">
+               	<sheet>
+                	<group>
+                    	<group>
+                    		<field name="name" required="True"/>
+                    		<field name="company_id"/>
+                    		<field name="hour_start" widget="float_time" class="oe_inline" required="True"/>
+                			<field name="hour_end" widget="float_time" class="oe_inline" required="True" />
+                    	</group>
+                    	<group>
+                    		<field name="minimum_ot_minute"/>
+                    		<field name="block_minutes"/>
+                   			<field name="maximum_leave_day"/>
+                    	</group>
+                    </group>
+               	</sheet>
+               </form>
+            </field>
+          </record> 
+
+		  <!-- Inherits Resource Calendar View -->
+			<record id="resource_calendar_overtime_form" model="ir.ui.view">
+				<field name="name">resource.calendar.overtime</field>
+				<field name="model">resource.calendar</field>
+				<field name="inherit_id" ref="resource.resource_calendar_form"/>
+				<field name="arch" type="xml">
+					<xpath expr="//field[@name='tz']" position="after">
+						<field name="overtime_rule_id"/>
+						<field name="sunday_overtime_rule_id"/>
+					</xpath>
+				</field>
+			</record>
+          
+          <record id="action_overtime_rule" model="ir.actions.act_window">
+	            <field name="name">Overtime Rules</field>
+	            <field name="type">ir.actions.act_window</field>
+	            <field name="res_model">aard.hr.overtime.rule</field>
+	            <field name="view_type">form</field>
+	            <field name="view_mode">tree,form</field>
+	        </record>
+	        
+	        <menuitem action="action_overtime_rule" name="Overtime Rules"
+	            id="menu_overtime_configuration_rule" parent="menu_overtime_configuration"
+	            sequence="1"
+				groups="hr_attendance.group_hr_attendance_user"/>
+	</data>
+</odoo>

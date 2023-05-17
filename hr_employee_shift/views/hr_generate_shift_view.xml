@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+    <!-- explicit wizard view definition -->
+        <record model="ir.ui.view" id="hr_employee_shift.generate_schedule_form">
+            <field name="name">hr_employee_shift_generate_schedule form</field>
+            <field name="model">hr.shift.generate</field>
+            <field name="arch" type="xml">
+                <form  create="false" edit="false">
+                    <sheet>
+                        <group>
+                            <group>
+                                <!-- <field name="hr_department"/> -->
+                                <field name="employee_id" domain="[('contract_ids', '!=', False)]">
+                                    <tree editable="1">
+                                        <field name="name"/>
+                                    </tree>
+                                </field>
+                                <!-- <field name="contract_id" attrs="{'readonly': [('employee_id', '=', False)]}" domain="[('employee_id','=',employee_id),('date_start','&lt;=',start_date)]" context="{'default_employee_id': employee_id}"/> -->
+                                <field name="resource_calendar_id"/>
+                                <field name="start_date"/>
+                                <field name="end_date" />
+                            </group>
+                            <group>
+                                <field name="rotating_shift"/>
+                                <field name="rotating_employee_id" attrs="{
+                                    'invisible': [('rotating_shift', '=', False)],
+                                    'readonly': [('employee_id', '=', False)]
+                                    }" domain="[('contract_ids', '!=', False), ('id','not in',employee_id)]">
+                                    <tree editable="1">
+                                        <field name="name"/>
+                                    </tree>
+                                </field>
+                                <!-- <field name="rotating_contract" attrs="{'readonly': [('rotating_employee_id', '=', False)]}" domain="[('employee_id','=',rotating_employee_id),('date_start','&lt;=',start_date)]" context="{'default_employee_id': rotating_employee_id}"/> -->
+                                <field name="rotating_resource_calendar" attrs="{
+                                    'invisible': [('rotating_shift', '=', False)],
+                                    'required': [('rotating_shift', '=', True)],
+                                    'readonly': [('resource_calendar_id', '=', False)]
+                                    }"   domain="[('id','!=',resource_calendar_id)]"/>
+                            </group>
+                        </group>
+                        <footer>
+                            <button string="Generate" name="action_schedule_shift" type="object"
+                                class="oe_highlight"/>
+                            <button string="Cancel" special="cancel"
+                                class="oe_link"/>
+                        </footer>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="hr_employee_shift.generate_schedule_action_window">
+        <field name="name">Employee Shift</field>
+        <field name="res_model">hr.shift.generate</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+    </record>
+
+    <!-- menu item -->
+    <menuitem name="Shift" id="menu_shift_schedule_generate_id_menu" parent="menu_shift" groups="hr.group_hr_manager"/>
+    <menuitem name="Assign Schedule"
+              id="hr_employee_shift.menu_shift_schedule_generate_id"
+              parent="menu_shift_schedule_generate_id_menu"
+              action="hr_employee_shift.generate_schedule_action_window"
+              groups="hr.group_hr_manager"/>
+
+  </data>
+</odoo>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<data noupdate="1">
+    <!-- Record Rule For Employee -->
+    <record id="hr_employee_owner_rule" model="ir.rule">
+        <field name="name">Employee: Employee: Only read/write owner</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        <field name="domain_force">[('user_id', 'in', [user.id])]</field>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="hr_employee_manager_owner_rule" model="ir.rule">
+        <field name="name">Employee: Employee: Only read manager of owner</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        <field name="domain_force">[('child_ids', '!=', False), ('child_ids.user_id', 'child_of', [user.id])]</field>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="hr_employee_manager_read_employee_rule" model="ir.rule">
+        <field name="name">Employee: Manager: read all employee belong your Department</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        <field name="domain_force">[('parent_id', '!=', False), ('parent_id.user_id', 'in', [user.id])]</field>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="hr_employee_officer_rule" model="ir.rule">
+        <field name="name">Employee: Officer: full access all employee belong to your company</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="groups" eval="[(4, ref('hr.group_hr_user'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
+
+    <!-- Record Rule For Contract of Employee Model with system user group -->
+
+    <record id="hr_contract_rule_system_user" model="ir.rule">
+        <field name="name">Contract: Internal User: only read owner</field>
+        <field name="model_id" ref="hr_contract.model_hr_contract"/>
+        <field name="domain_force">[('employee_id.user_id', 'in', [user.id])]</field>
+        <field name="groups" eval="[(4,ref('base.group_user'))]"/>
+    </record>
+    <record id="hr_contract_rule_manager" model="ir.rule">
+        <field name="name">Contract: Manager: read all</field>
+        <field name="model_id" ref="hr_contract.model_hr_contract"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4,ref('hr_contract.group_hr_contract_manager'))]"/>
+    </record>
+
+    <!-- Record Rule For User -->
+    <record id="base_user_owner_rule" model="ir.rule">
+        <field name="name">User: Internal User: Only read/write owner</field>
+        <field name="model_id" ref="base.model_res_users"/>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        <field name="domain_force">[('id', 'in', [user.id])]</field>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+    <record id="base_user_hr_user_full_rule" model="ir.rule">
+        <field name="name">User: Settings: full access</field>
+        <field name="model_id" ref="base.model_res_users"/>
+        <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
+</data>
+</odoo>
