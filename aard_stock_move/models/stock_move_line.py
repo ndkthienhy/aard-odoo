@@ -7,4 +7,4 @@ class StockMoveLine(models.Model):
     _inherit = "stock.move.line"
 
     note = fields.Text(related='picking_id.note', store=True, readonly=False)
-    qty_available = fields.Float(related='product_id.qty_available', store=True, readonly=False, group_operator='avg')
+    qty_available = fields.Float(related='product_id.qty_available', readonly=False, group_operator='avg')
