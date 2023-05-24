@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_aard_hr_lunch_attendance_user,aard.hr.lunch.attendance.user,model_aard_hr_lunch,hr_attendance.group_hr_attendance_user,1,1,1,1
-access_aard_hr_lunch_rule_attendance_user,aard.hr.lunch.rule.attendance.user,model_aard_hr_lunch_rule,hr_attendance.group_hr_attendance_user,1,1,1,1
