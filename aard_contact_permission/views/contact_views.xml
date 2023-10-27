@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem name="Contacts"
+        id="contacts.menu_contacts"
+        sequence="4"
+        web_icon="contacts,static/description/icon.png"
+        groups="aard_contact_permission.group_access_contact"/>
+</odoo>

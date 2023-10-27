@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- Project -->
+        <menuitem name="Project"
+            id="project.menu_main_pm"
+            groups="project.group_project_manager,project.group_project_user,group_project_owner_manager"
+            web_icon="project,static/description/icon.png"
+            sequence="50"/>
+        <record id="edit_project_inherit" model="ir.ui.view">
+            <field name="name">project.project.form</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="message_partner_ids" attrs="{'invisible': [('privacy_visibility', '!=', 'followers')]}" readonly="False"/>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_project_kanban_inherit">
+            <field name="name">project.project.kanban.inherit</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.view_project_kanban"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('o_kanban_card_manage_pane')]" position="replace">
+                    <div class="o_kanban_card_manage_pane dropdown-menu" groups="aard_project_permission.group_project_owner_manager" role="menu">
+                        <div class="o_kanban_card_manage_section o_kanban_manage_reports">
+                            <div role="menuitem">
+                                <a name="%(portal.portal_share_action)d" type="action">Share</a>
+                            </div>
+                            <div role="menuitem">
+                                <a type="edit">Edit</a>
+                            </div>
+                            <div role="menuitem" t-if="record.rating_status.raw_value != 'no'">
+                                <a name="action_view_all_rating" type="object">Customer Ratings</a>
+                            </div>
+                        </div>
+                        <div role="menuitem" aria-haspopup="true" class="o_no_padding_kanban_colorpicker">
+                            <ul class="oe_kanban_colorpicker" data-field="color" role="popup"/>
+                        </div>
+                    </div>
+                </xpath>
+                <xpath expr="//a[hasclass('o_kanban_manage_toggle_button')]" position="replace">
+                    <a class="o_kanban_manage_toggle_button o_left" href="#" groups="aard_project_permission.group_project_owner_manager"><i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"/></a>
+                </xpath>
+            </field>
+        </record>
+
+</odoo>

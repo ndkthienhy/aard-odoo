@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Menu items -->
+        <menuitem id="website.menu_dashboard"
+            name="Dashboard"
+            sequence="1"
+            groups="website.group_website_publisher"
+            parent="website.menu_website_configuration"/>
+    </data>
+</odoo>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="group_project_owner_manager" model="res.groups">
+        <field name="name">Manager: Own Document Only</field>
+        <field name="category_id" ref="base.module_category_project_management"/>
+        <field name="implied_ids" eval="[(4, ref('project.group_project_user'))]"/>
+    </record>
+    <record id="project.group_project_manager" model="res.groups">
+        <field name="name">Manager: All Document</field>
+        <field name="category_id" ref="base.module_category_project_management"/>
+        <field name="implied_ids" eval="[(4, ref('group_project_owner_manager'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+    <data noupdate="1">
+        <record model="ir.rule" id="project_invitation_members_rule">
+            <field name="name">Project: employees: only invitation projects</field>
+            <field name="model_id" ref="project.model_project_project"/>
+            <field name="domain_force">[('privacy_visibility', '=', 'followers'),
+                                            ('message_partner_ids', 'in', [user.partner_id.id])
+                                        ]</field>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record model="ir.rule" id="project_owner_manager_rule">
+            <field name="name">Project: manager: own document only</field>
+            <field name="model_id" ref="project.model_project_project"/>
+            <field name="domain_force">['', '|', ('privacy_visibility', '=', 'followers'),
+                                            ('message_partner_ids', 'in', [user.id]),
+                                            ('user_id.id', '=', [user.id])
+                                        ]</field>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+    </data>
+</odoo>
