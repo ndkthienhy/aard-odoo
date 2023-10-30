@@ -24,7 +24,7 @@
         <record model="ir.rule" id="project_owner_manager_rule">
             <field name="name">Project: manager: own document only</field>
             <field name="model_id" ref="project.model_project_project"/>
-            <field name="domain_force">['', '|', ('privacy_visibility', '=', 'followers'),
+            <field name="domain_force">['&', '|', ('privacy_visibility', '=', 'followers'),
                                             ('message_partner_ids', 'in', [user.id]),
                                             ('user_id.id', '=', [user.id])
                                         ]</field>
