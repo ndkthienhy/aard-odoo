@@ -46,7 +46,7 @@
 
         <record model="ir.rule" id="task_visibility_follower_rule">
             <field name="name">Project/Task: employees: only task of project following assigned</field>
-            <field name="model_id" ref="model_project_task"/>
+            <field name="model_id" ref="project.model_project_task"/>
             <field name="domain_force">['&amp;','|',('project_id.privacy_visibility', '=', 'followers'),
                 ('project_id.message_partner_ids', 'in', [user.partner_id.id]),
                 ('user_id', 'in', [user.id])
