@@ -57,7 +57,7 @@
 
         <record model="ir.rule" id="owner_manager_task_visibility_follower_rule">
             <field name="name">Project/Task: owner manager: task of project following and task of members</field>
-            <field name="model_id" ref="model_project_task"/>
+            <field name="model_id" ref="project.model_project_task"/>
             <field name="domain_force">['&amp;','|',('project_id.privacy_visibility', '=', 'followers'),
                 ('project_id.message_partner_ids', 'in', [user.partner_id.id]),
                 ('project_id.user_id', 'in', [user.id])
