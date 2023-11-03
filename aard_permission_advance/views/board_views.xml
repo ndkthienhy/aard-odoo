@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--My Dashboard Menu-->
+    <menuitem id="base.menu_board_root" name="Dashboards" sequence="305" web_icon="base,static/description/board.png" groups="group_dashboard_user"/>
+</odoo>

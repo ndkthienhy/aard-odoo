@@ -17,18 +17,52 @@
             <field name="name">Project: employees: only invitation projects</field>
             <field name="model_id" ref="project.model_project_project"/>
             <field name="domain_force">[('privacy_visibility', '=', 'followers'),
-                                            ('message_partner_ids', 'in', [user.partner_id.id])
+                                        ('message_partner_ids', 'in', [user.id])
                                         ]</field>
             <field name="groups" eval="[(4, ref('base.group_user'))]"/>
         </record>
         <record model="ir.rule" id="project_owner_manager_rule">
             <field name="name">Project: manager: own document only</field>
             <field name="model_id" ref="project.model_project_project"/>
-            <field name="domain_force">['&', '|', ('privacy_visibility', '=', 'followers'),
-                                            ('message_partner_ids', 'in', [user.id]),
-                                            ('user_id.id', '=', [user.id])
+            <field name="domain_force">['&amp;','|',('privacy_visibility', '=', 'followers'),
+                                            ('message_partner_ids', 'in', [user.partner_id.id]),
+                                            ('user_id', 'in', [user.id])
                                         ]</field>
-            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="groups" eval="[(4, ref('aard_project_permission.group_project_owner_manager'))]"/>
+        </record>
+        <record model="ir.rule" id="user_read_rule">
+            <field name="name">Project: manager: users: Show all user</field>
+            <field name="model_id" ref="base.model_res_users"/>
+            <field name="domain_force">[
+                (1, '=', 1), ('share', '=', False)
+            ]</field>
+            <field name="groups" eval="[(4,ref('project.group_project_owner_manager'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+
+        <record model="ir.rule" id="task_visibility_follower_rule">
+            <field name="name">Project/Task: employees: only task of project following assigned</field>
+            <field name="model_id" ref="model_project_task"/>
+            <field name="domain_force">['&amp;','|',('project_id.privacy_visibility', '=', 'followers'),
+                ('project_id.message_partner_ids', 'in', [user.partner_id.id]),
+                ('user_id', 'in', [user.id])
+            ]</field>
+            <field name="groups" eval="[(4,ref('base.group_user'))]"/>
+        </record>
+
+
+        <record model="ir.rule" id="owner_manager_task_visibility_follower_rule">
+            <field name="name">Project/Task: owner manager: task of project following and task of members</field>
+            <field name="model_id" ref="model_project_task"/>
+            <field name="domain_force">['&amp;','|',('project_id.privacy_visibility', '=', 'followers'),
+                ('project_id.message_partner_ids', 'in', [user.partner_id.id]),
+                ('project_id.user_id', 'in', [user.id])
+            ]</field>
+            <field name="groups" eval="[(4,ref('aard_project_permission.group_project_owner_manager'))]"/>
         </record>
     </data>
 </odoo>

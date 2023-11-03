@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="quick_create_task_form_inherit" model="ir.ui.view">
+        <field name="name">project.task.form.quick_create.inherit</field>
+        <field name="model">project.task</field>
+        <field name="priority">2000</field>
+        <field name="inherit_id" ref="project.quick_create_task_form"/>  
+        <field name="arch" type="xml">
+            <field name="user_id" position="before">
+                <field name="project_id" invisible="1"></field>
+            </field>
+        </field>
+    </record>
+</odoo>

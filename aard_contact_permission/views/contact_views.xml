@@ -5,5 +5,5 @@
         id="contacts.menu_contacts"
         sequence="4"
         web_icon="contacts,static/description/icon.png"
-        groups="aard_contact_permission.group_access_contact"/>
+        groups="group_partner_user"/>
 </odoo>

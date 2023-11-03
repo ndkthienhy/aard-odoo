@@ -6,7 +6,7 @@
             groups="project.group_project_manager,project.group_project_user,group_project_owner_manager"
             web_icon="project,static/description/icon.png"
             sequence="50"/>
-        <record id="edit_project_inherit" model="ir.ui.view">
+        <!-- <record id="edit_project_inherit" model="ir.ui.view">
             <field name="name">project.project.form</field>
             <field name="model">project.project</field>
             <field name="inherit_id" ref="project.edit_project"/>
@@ -15,7 +15,7 @@
                     <field name="message_partner_ids" attrs="{'invisible': [('privacy_visibility', '!=', 'followers')]}" readonly="False"/>
                 </xpath>
             </field>
-        </record>
+        </record> -->
         <record model="ir.ui.view" id="view_project_kanban_inherit">
             <field name="name">project.project.kanban.inherit</field>
             <field name="model">project.project</field>

@@ -2,7 +2,7 @@
     'name': "Aardwolf Contact Permission",
     'summary': "",
     'description': """Set rule for Contacts""",
-    'category': 'Tools',
+    'category': 'Contact',
     'author': "Nguyen Duy Khanh",
     'company': 'Aardwolf Industries LLC',
     'website': "https://www.odoo.com/page/website-builder",
