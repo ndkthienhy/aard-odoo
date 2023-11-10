@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="group_project_owner_manager" model="res.groups">
+    <record id="aard_project_permission.group_project_owner_manager" model="res.groups">
         <field name="name">Manager: Own Document Only</field>
         <field name="category_id" ref="base.module_category_project_management"/>
         <field name="implied_ids" eval="[(4, ref('project.group_project_user'))]"/>
