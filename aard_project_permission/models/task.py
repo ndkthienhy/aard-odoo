@@ -6,7 +6,7 @@ class ProjectTask(models.Model):
     _inherit = ['project.task']
 
     def _get_followers(self, project):
-        current_user_id = self.env.uid
+        current_user_id = self.env.context.get('uid')
         user = self.env['res.users'].browse(current_user_id)
         user_follow = []
 
@@ -18,13 +18,13 @@ class ProjectTask(models.Model):
                     user_follow.append(partner.user_ids.id)
         
         #filter list of user base on role
-        # if current_user_id in user_follow and (user.has_group('project.group_project_manager') or (user.has_group('aard_project_permission.group_project_owner_manager') and project.user_id.id == current_user_id)):
-        #     return user_follow
-        # elif current_user_id in user_follow:
-        #     return current_user_id
-        # else:
-        #     return False
-        return user_follow
+        if current_user_id in user_follow and (user.has_group('project.group_project_manager') or (user.has_group('aard_project_permission.group_project_owner_manager') and project.user_id.id == current_user_id)):
+            return user_follow
+        elif current_user_id in user_follow:
+            return current_user_id
+        else:
+            return False
+        # return user_follow
 
     def _get_domain_followers(self):
 
