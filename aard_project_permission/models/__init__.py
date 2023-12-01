@@ -1,3 +1,3 @@
 # See LICENSE file for full copyright and licensing details.
 
-from . import task
+from . import task,project
