@@ -5,7 +5,7 @@ from odoo import api, fields, models
 class ProjectTask(models.Model):
     _inherit = ['project.task']
 
-    def _get_followers(self, project):
+    def _get_project_followers(self, project):
         current_user_id = self.env.uid
         user = self.env['res.users'].browse(current_user_id)
         user_follow = []
@@ -32,7 +32,7 @@ class ProjectTask(models.Model):
             user_follow = []
             project = self.env['project.project'].search([('id', '=', self.env.context.get('default_project_id'))])
             if project:
-                user_follow = self._get_followers(project)
+                user_follow = self._get_project_followers(project)
             if user_follow:
                 return [('id', 'child_of', user_follow)]
         return [('id', 'child_of', 0)]
@@ -49,6 +49,6 @@ class ProjectTask(models.Model):
 
         user_follow = []
         if self.project_id:
-            user_follow = self._get_followers(self.project_id)
+            user_follow = self._get_project_followers(self.project_id)
 
         return {'domain': {'user_id': [('id', 'child_of', user_follow)]}}
