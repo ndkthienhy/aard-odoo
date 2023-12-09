@@ -47,22 +47,33 @@
         <record model="ir.rule" id="task_visibility_follower_rule">
             <field name="name">Project/Task: employees: only task of project following assigned</field>
             <field name="model_id" ref="project.model_project_task"/>
-            <field name="domain_force">['&amp;','|',('project_id.privacy_visibility', '=', 'followers'),
-                ('project_id.message_partner_ids', 'in', [user.partner_id.id]),
+            <field name="domain_force">[
                 ('user_id', 'in', [user.id])
             ]</field>
             <field name="groups" eval="[(4,ref('base.group_user'))]"/>
         </record>
 
-
-        <record model="ir.rule" id="owner_manager_task_visibility_follower_rule">
-            <field name="name">Project/Task: owner manager: task of project following and task of members</field>
+        #re-assign role for group_project_owner_manager
+        <record model="ir.rule" id="project.task_visibility_rule">
+            <field name="name">Project/Task: owner manager: only view all task of project following</field>
             <field name="model_id" ref="project.model_project_task"/>
-            <field name="domain_force">['&amp;','|',('project_id.privacy_visibility', '=', 'followers'),
-                ('project_id.message_partner_ids', 'in', [user.partner_id.id]),
-                ('project_id.user_id', 'in', [user.id])
+            <field name="domain_force">[
+            '|',
+                ('project_id.privacy_visibility', '!=', 'followers'),
+                '|',
+                    '&amp;',
+                        ('project_id.privacy_visibility', '=', 'followers'),
+                        ('project_id.message_partner_ids', 'in', [user.partner_id.id]),
+                    '|',
+                        ('message_partner_ids', 'in', [user.partner_id.id]),
+                        # to subscribe check access to the record, follower is not enough at creation
+                        ('user_id', '=', user.id)
             ]</field>
             <field name="groups" eval="[(4,ref('aard_project_permission.group_project_owner_manager'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
         </record>
     </data>
 </odoo>
