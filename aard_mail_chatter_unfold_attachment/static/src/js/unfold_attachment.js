@@ -64,6 +64,11 @@ var UnfoldAttach = Chatter.include({
             self._updateMentionSuggestions();
         });
         this._updateAttachmentCounter();
+
+        this._isAttachmentBoxOpen = false;
+        this._areAttachmentsLoaded = false;
+        this.attachments = {};
+        this._onClickAttachmentButton();
     },
 });
 
