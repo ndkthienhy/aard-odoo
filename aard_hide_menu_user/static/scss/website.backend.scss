@@ -1,0 +1,7 @@
+.o_user_menu{
+    .dropdown-menu-right{
+        a[data-menu="support"], a[data-menu="account"]{
+            display: none;
+        }
+    }
+}
