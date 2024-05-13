@@ -18,7 +18,9 @@
              'views/aard_hr_overtime_view.xml',
              'views/aard_hr_overtime_rule_view.xml',
              'views/hr_attendance_view.xml'],
-    'demo': [],
+    'demo': [
+        'data/overtime_rule_data.xml'
+    ],
     'installable': True,
     'application': True,
 }

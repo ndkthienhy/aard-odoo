@@ -18,7 +18,10 @@
              'views/aard_hr_lunch_rule_view.xml',
              'views/hr_attendance_view.xml'
              ],
-    'demo': [],
+    'demo': [
+        'data/lunch_rule_data.xml',
+        'data/overtime_rule_inherit_data.xml'
+    ],
     'installable': True,
     'application': True,
 }

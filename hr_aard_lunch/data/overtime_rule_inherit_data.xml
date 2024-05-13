@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data noupdate="1">
+    <data noupdate="True">
         <record id="hr_aard_overtime.overtime_for_office" model="aard.hr.overtime.rule">
             <field name="lunch_rule_id" ref="lunch_rule_overtime_3h"/>
         </record>

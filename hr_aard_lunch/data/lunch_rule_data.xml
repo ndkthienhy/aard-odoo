@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <odoo>
-    <data noupdate="1">        
+    <data noupdate="True">        
         <record id='lunch_rule_working_hour' model='aard.hr.lunch.rule'>
             <field name="name">Lunch for Working Hour</field>
             <field name="company_id" ref="__export__.res_company_10_7f06dfe7"/>
