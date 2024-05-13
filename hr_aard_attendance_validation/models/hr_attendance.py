@@ -140,8 +140,8 @@ class HrAttendance(models.Model):
             if attendance.check_out:
                 attendance.valid_check_out = self._get_valid_attendace(attendance, 'checkout')
 
-    def _apply_block_minute(self, late_second):
-        block_minute = self.env['ir.config_parameter'].sudo().get_param('attendance.block_minute') and self.env.user.company_id.block_minute or 0
+    def _apply_block_minute(self, late_second, att):
+        block_minute = self.env['ir.config_parameter'].sudo().get_param('attendance.block_minute') and self.env.user.company_id.block_minute or att.company_id.block_minute or 0
         if block_minute > 0:
             block_second = block_minute * 60
             remain = late_second % block_second
@@ -160,7 +160,7 @@ class HrAttendance(models.Model):
                 if attendance.check_in.replace(second=0) > valid_checkin:
                     # late = real checkin - schedule working checkin
                     late_attendance = attendance.check_in - attendance.valid_check_in
-                    late_attendance_hours = self._apply_block_minute(late_attendance.total_seconds()) / 3600
+                    late_attendance_hours = self._apply_block_minute(late_attendance.total_seconds(), attendance) / 3600
                     attendance.late_attendance_hours = late_attendance_hours
 
     @api.depends('check_out', 'valid_check_out', 'resource_calendar_id')
@@ -172,7 +172,7 @@ class HrAttendance(models.Model):
                 if attendance.check_out < valid_ck_out:
                     # minute = schedule working checkout - real checkout
                     early_leave = attendance.valid_check_out - attendance.check_out
-                    early_leave_hours = self._apply_block_minute(early_leave.total_seconds()) / 3600
+                    early_leave_hours = self._apply_block_minute(early_leave.total_seconds(), attendance) / 3600
                     attendance.early_leave_hours = early_leave_hours
 
     @api.depends('valid_check_in', 'valid_check_out', 'resource_calendar_id')
