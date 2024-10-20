@@ -1,0 +1,13 @@
+<odoo>
+    <template id="s_5_product" name="5 Product Carousel">
+        <section>
+            <div>
+                <div class="js_get_objects product_carousel_design"
+                     data-product_view="website_product_carousel.list_of_product_view"
+                     data-objects_in_slide="5" data-objects_limit="10"
+                     data-split_product_object="4" data-filter_id="1"/>
+            </div>
+        </section>
+    </template>
+
+</odoo>

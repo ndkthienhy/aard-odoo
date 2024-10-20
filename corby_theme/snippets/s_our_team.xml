@@ -1,0 +1,127 @@
+<odoo>
+    <template id="s_our_team" name="Our Teams">
+        <section class="section">
+            <div class="container">
+                <div class="row mb32 mt32">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="tema-member">
+                            <div class="team-thumbnail">
+                                <img src="/corby_theme/static/src/img/team-1.jpg"
+                                     alt=""/>
+                                <div class="overlay">
+                                    <div class="social-media">
+                                        <a href="#" class="facebook">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                        <a href="#" class="twitter">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                        <a href="#" class="google">
+                                            <i class="fa fa-google-plus"></i>
+                                        </a>
+                                        <a href="#" class="linkedin">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h4>David Givens</h4>
+                                <p>Chief technical officer</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="tema-member">
+                            <div class="team-thumbnail">
+                                <img src="/corby_theme/static/src/img/team-2.jpg"
+                                     alt=""/>
+                                <div class="overlay">
+                                    <div class="social-media">
+                                        <a href="#" class="facebook">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                        <a href="#" class="twitter">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                        <a href="#" class="google">
+                                            <i class="fa fa-google-plus"></i>
+                                        </a>
+                                        <a href="#" class="linkedin">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h4>Darrell S.Allen</h4>
+                                <p>Software Enginner</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="tema-member">
+                            <div class="team-thumbnail">
+                                <img src="/corby_theme/static/src/img/team-3.jpg"
+                                     alt=""/>
+                                <div class="overlay">
+                                    <div class="social-media">
+                                        <a href="#" class="facebook">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                        <a href="#" class="twitter">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                        <a href="#" class="google">
+                                            <i class="fa fa-google-plus"></i>
+                                        </a>
+                                        <a href="#" class="linkedin">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h4>John Doe</h4>
+                                <p>Business manager</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6">
+                        <div class="tema-member">
+                            <div class="team-thumbnail">
+                                <img src="/corby_theme/static/src/img/team-4.jpg"
+                                     alt=""/>
+                                <div class="overlay">
+                                    <div class="social-media">
+                                        <a href="#" class="facebook">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                        <a href="#" class="twitter">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                        <a href="#" class="google">
+                                            <i class="fa fa-google-plus"></i>
+                                        </a>
+                                        <a href="#" class="linkedin">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info">
+                                <h4>Justyna Michallek</h4>
+                                <p>Creative Director &amp; Ceo</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </template>
+
+</odoo>

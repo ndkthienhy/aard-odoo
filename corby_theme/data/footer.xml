@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!-- <template id="corby_theme_footer_custom"
+              inherit_id="website.footer_custom"
+              name="Footer">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <div class="oe_structure" id="footer" style="padding: 0px !important;">
+                <section class="footer-top">
+                    <div class="footer-ourservice">
+                        <div class="container-fluid hidden" style="background-color: #fcdc3e;">
+                            <div class="container" style="background-color: #fcdc3e;">
+                                <div class="vc_row wpb_row row">
+                                    <div class="vc_column_container col-md-6">
+                                        <div class="wpb_wrapper vc_column-inner mt-3">
+                                            <h3 class="text-black">
+                                                BE THE FIRST TO KNOW
+                                            </h3>
+                                            <div class="wpb_text_column wpb_content_element mb32">
+                                                <p class="text-black" style="line-height: 20px;">Get all the latest
+                                                    information on Events, Sales and Offers.
+                                                    <br/>
+                                                    Sign up for newsletter today.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="vc_column_container col-md-6 vc_custom_1506170369566 mt32 mb32">
+                                        <div class="block-subscribe">
+                                            <div class="input-group js_subscribe hidden"
+                                                data-list-id="1"
+                                                data-subscribe="off">
+                                                <input type="email" name="email"
+                                                    class="js_subscribe_email form-control"
+                                                    placeholder="your email..."
+                                                    style="    border-radius: 0;    height: 50px;"/>
+                                                <span class="input-group-btn">
+                                                    <a href="#"
+                                                    style="    border-radius: 0; height: 50px;    padding-top: 14px;"
+                                                    class="btn btn-primary subscribe js_subscribe_btn o_default_snippet_text">
+                                                        Subscribe
+                                                    </a>
+                                                    <a href="#"
+                                                    class="btn btn-success js_subscribed_btn hidden o_default_snippet_text"
+                                                    disabled="disabled"
+                                                    style="    border-radius: 0; height: 50px;    padding-top: 14px;">
+                                                        Thanks
+                                                    </a>
+                                                </span>
+                                                <div class="alert alert-success hidden o_default_snippet_text">
+                                                    Thanks for your
+                                                    subscription!
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="container-fluid" style="background-color: #272723;">
+                            <div class="container" style="background-color: #272723;">
+                                <div class="row">
+                                    <div class="footer-column footer-left-cms d-sm-none d-md-block col-12 col-md-4">
+                                        <div id="ttcmsfooter">
+                                            <div class="ttfooter-logo">
+                                                <a href="#">
+                                                    <img src="/corby_theme/static/src/img/logo.jpg"
+                                                        alt="footer-logo.png"/>
+                                                </a>
+                                            </div>
+                                            <div class="follow-us col-sm-12">
+                                                <h5>Follow us</h5>
+                                                <ul class="list-unstyled" style="display: block;">
+                                                    <li class="facebook">
+                                                        <a title="Facebook" href="#" class="_blank" target="_blank">
+                                                            <i class="fa fa-facebook"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="twitter">
+                                                        <a title="Twitter" href="#" class="_blank" target="_blank">
+                                                            <i class="fa fa-twitter"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="rss">
+                                                        <a title="RSS" href="#" class="_blank" target="_blank">
+                                                            <i class="fa fa-rss"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="google-plus">
+                                                        <a title="Google Plus" rel="publisher" href="#"
+                                                        class="_blank" target="_blank">
+                                                            <i class="fa fa-google-plus"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="merge-links col-sm-6 col-12 col-md-4">
+                                        <div class="col-12 row">
+                                            <div class="col-sm-6 col-6 footer-column footer-category">
+                                                <h5>Extras</h5>
+                                                <ul class="list-unstyled" style="display: block;">
+                                                    <li>
+                                                        <a href="#">
+                                                            Brands
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            Gift Certificates
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            Affiliate
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            Specials
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            Site Map
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-6 col-6 footer-column footer-quick-link">
+                                                <h5>Quick Link</h5>
+                                                <ul class="list-unstyled" style="display: block;">
+                                                    <li>
+                                                        <a href="#">
+                                                            About us
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            Shipping Policy
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            Return Policy
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            Cookie Policy
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            Privacy Policy
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            FAQ's
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="footer-column footer-right-cms col-sm-3 col-12 row col-md-3"
+                                        style="padding: 40px;">
+                                        <aside id="footer-right">
+                                            <div class="html-content">
+                                                <div class="box-content">
+                                                    <div class="contact-us">
+                                                        <h5>Get in touch</h5>
+                                                        <ul class="list-unstyled" style="display: block;">
+                                                            <li class="contact">
+                                                                <i class="fa fa-phone"></i>
+                                                                <span class="phone">0123-456-789</span>
+                                                            </li>
+                                                            <li class="email">
+                                                                <i class="fa fa-envelope"></i>
+                                                                <span class="email-address">
+                                                                    <a href="mailto:info@yourcompany.com">
+                                                                        info@yourcompany.com
+                                                                    </a>
+                                                                </span>
+                                                            </li>
+                                                            <li class="address">
+                                                                <i class="fa fa-map-marker"></i>
+                                                                <span class="contact-address">CD-3444 South Avenue Street,
+                                                                    New York
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </aside>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </xpath>
+    </template> -->
+
+    <template id="website.layout_footer_copyright" inherit_id="website.layout"
+              name="Footer Copyright">
+        <xpath expr="//footer" position="inside">
+            <div class="copyright-footer">
+                <div class="container" style="background: #272723;">
+                    <div class="row">
+                        <div class="text-white text-center mt16 mb16 col-md-12"
+                             itemscope="itemscope"
+                             itemtype="http://schema.org/Organization"
+                             style="padding-left:16px">
+                            Copyright &amp;copy;
+                            <span t-field="res_company.name" itemprop="name">
+                                Company name
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

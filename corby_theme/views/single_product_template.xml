@@ -1,0 +1,299 @@
+<odoo>
+    <template id="product_details_tab_view" inherit_id="website_sale.product"
+              name="Product Tabs view">
+        <xpath expr="//div[@t-field='product.website_description']"
+               position="replace"/>
+        <xpath expr="//section[@id='product_detail']" position="inside">
+            <div class="container mt64 mb32">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a data-toggle="tab" href="#description" class="active show nav-link">Description</a>
+                    </li>
+                    <li id="product_review" class="nav-item"/>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="description" class="tab-pane active">
+                        <div itemprop="description" t-field="product.website_description"
+                             class="oe_structure mt16" id="product_full_description"/>
+                    </div>
+                    <div id="review"/>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="product_review_template"
+              inherit_id="corby_theme.product_details_tab_view"
+              active="False" customize_show="True" name="Discussion and Rating">
+        <xpath expr="//li[@id='product_review']" position="replace">
+            <li id="product_review" class="nav-item">
+                <a data-toggle="tab" href="#review" class="nav-link">Review</a>
+            </li>
+        </xpath>
+        <xpath expr="//div[@id='review']" position="replace">
+            <div id="review" class="tab-pane fade mt-4">
+                <t t-call="portal.message_thread">
+                    <t t-set="object" t-value="product"/>
+                    <t t-set="display_rating" t-value="True"/>
+                </t>
+            </div>
+        </xpath>
+    </template>
+    <template id="website_sale.product_comment" inherit_id="website_sale.product" active="False" customize_show="False"
+              name="Discussion and Rating"/>
+
+    <template id="recommended_products" inherit_id="website_sale.recommended_products" customize_show="True"
+              name="Alternative Products">
+        <!-- <xpath expr="//div[hasclass('container')]" position="attributes">
+            <attribute name="class">container</attribute>
+        </xpath> -->
+        <xpath expr="//div[hasclass('row', 'mt16')]" position="replace">
+            <div class="mt16" style="">
+                <div class="owl-carousel alternative-product owl-theme">
+                    <t t-foreach="product.alternative_product_ids" t-as="alt_product">
+                        <div class="mt16 text-center">
+                            <div t-field="alt_product.image"
+                                 t-options='{"widget": "image", "resize": None if product_image_big else "350x350"}'/>
+                            <h5>
+                                <a t-attf-href="/shop/product/#{ slug(alt_product) }" style="display: block">
+                                    <span t-att-title="alt_product.name" t-field="alt_product.name"
+                                          class="o_text_overflow"/>
+                                </a>
+                            </h5>
+                            <t t-call="website_sale.product_price"/>
+                        </div>
+                    </t>
+                </div>
+            </div>
+            <script>
+                $(".alternative-product").owlCarousel({
+                margin:10,
+                responsive: {
+                768: {
+                items: 2
+                },
+                979: {
+                items : 2
+                },
+                479: {
+                items : 2
+                },
+                320: {
+                items : 2
+                },
+                1199: {
+                items : 5
+                },
+                },
+                });
+            </script>
+        </xpath>
+    </template>
+    <template id="product_row_inherit"
+              inherit_id="website_sale.product">
+        <xpath expr="//section[@id='product_detail']/div[hasclass('row')][1]" position="attributes">
+            <attribute name="style">display:none;</attribute>
+        </xpath>
+    </template>
+    <template id="product_inherit"
+              inherit_id="website_sale.product">
+        
+        <xpath expr="//div[hasclass('col-md-6')]" position="attributes">
+            <attribute name="class">col-sm-5 col-md-5 col-lg-5</attribute>
+        </xpath>
+        <xpath expr="//div[@id='product_details']" position="attributes">
+            <attribute name="class">col-sm-7 col-md-7 col-lg-7 mt24</attribute>
+        </xpath>
+        <!-- <xpath expr="//div[@id='product_details']" position="after">
+            <div class="d-sm-none d-md-block col-md-2 col-lg-2 single-product-side-block mt24">
+                <div class="oe_structure oe_empty"/>
+                <div class="box-content">
+                    <div id="ttcmsfooterservice">
+                        <div class="ttservicemerge">
+                            <div class="block_content" id="footer-service"
+                                 style="display: block;">
+                                <div class="ttshipping col-6 col-sm-12" style="border-bottom: 1px solid #3333;">
+                                    <div class="ttcontent_inner">
+                                        <div class="service">
+                                            <img src="/corby_theme/static/src/img/shipped.svg"
+                                                 class="img img-fluid"/>
+                                            <div class="service-content">
+                                                <div class="service-title">Free Shipping
+                                                </div>
+                                                <div class="service-desc">Deliver to door
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ttsupport col-6 col-sm-12" style="border-bottom: 1px solid #3333;">
+                                    <div class="ttcontent_inner">
+                                        <div class="service">
+                                            <img src="/corby_theme/static/src/img/support.svg"
+                                                 class="img img-fluid"/>
+                                            <div class="service-content">
+                                                <div class="service-title">24x7 Support
+                                                </div>
+                                                <div class="service-desc">in safe hands
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ttsaving col-6 col-sm-12" style="border-bottom: 1px solid #3333;">
+                                    <div class="ttcontent_inner">
+                                        <div class="service">
+                                            <img src="/corby_theme/static/src/img/piggy-bank.svg"
+                                                 class="img img-fluid"/>
+                                            <div class="service-content">
+                                                <div class="service-title">Big Saving</div>
+                                                <div class="service-desc">at lowest price
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ttmoneyback col-6 col-sm-12" style="border-bottom: 1px solid #3333;">
+                                    <div class="ttcontent_inner">
+                                        <div class="service">
+                                            <img src="/corby_theme/static/src/img/money-back.svg"
+                                                 class="img img-fluid"/>
+                                            <div class="service-content">
+                                                <div class="service-title">Money Back</div>
+                                                <div class="service-desc">Easy to return
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath> -->
+    </template>
+    <template id="website_sale_wishlist.product_add_to_wishlist" name='Add to wishlist in product page'
+              inherit_id="website_sale.product"
+              priority="20">
+        <xpath expr="//a[@id='add_to_cart']" position="after">
+            <t t-if="product.env.ref('website_sale_wishlist.add_to_wishlist').active">
+                <t t-set="in_wish" t-value="product._is_in_wishlist()"/>
+                <t t-set="product_variant" t-value="product_variant or product._create_first_product_variant()"/>
+                <button t-if="product_variant" type="button" role="button"
+                        class="btn btn-lg mt8 o_add_wishlist_dyn border" t-att-disabled='in_wish or None'
+                        title="Add to Wishlist" t-att-data-product-template-id="product.id"
+                        t-att-data-product-product-id="product_variant.id" data-action="o_wishlist">
+                    <!-- <span class="fa fa-heart" role="img" aria-label="Add to wishlist"></span> -->
+                    <span aria-label="Add to wishlist">Add to Wishlist</span>
+                </button>
+            </t>
+        </xpath>
+        <xpath expr="//div[@id='product_details']/p[hasclass('text-muted')]" position="replace">
+        </xpath>
+    </template>
+    
+    <template id="product_quantity_inherit" inherit_id="website_sale.product_quantity" customize_show="True"
+                name="Select Quantity">
+        <xpath expr="//div[hasclass('css_quantity')]" position="before">
+            <strong>QUANTITY</strong>
+        </xpath>
+    </template>
+   
+    <!--breadcrumb -->
+    <template id="product_breadcrumb"
+              inherit_id="website_sale.product">
+        <xpath expr="//section[@id='product_detail']"
+               position="before">
+            <section id="product_breadcrumb">
+                <div class="container">
+                    <div class="row">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="/">
+                                    <i class="fa fa-home text-primary"/>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="/shop">
+                                    <span style="color: #000000 !important;">shop</span>
+                                </a>
+                            </li>
+                            <t t-if="category">
+                                <t t-if="category.parent_id"
+                                   t-call="corby_theme.sub_category"/>
+                                <li class="breadcrumb-item text-black">
+                                    <a class="text-black"
+                                       t-att-href="keep('/shop/category/%s' % slug(category), category=0)"
+                                       t-field="category.name"/>
+                                </li>
+                                <li class="active text-black breadcrumb-item">
+                                    <span t-field="product.name"/>
+                                </li>
+
+                            </t>
+                            <t t-if="not category">
+                                <li class="active text-black breadcrumb-item">
+                                    <span t-field="product.name"/>
+                                </li>
+                            </t>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+        </xpath>
+    </template>
+
+    <template id="product_name_inherit"
+              inherit_id="website_sale.product">
+        <xpath expr="//h1[@t-field='product.name']"
+               position="after">
+            <h4 t-if="product.default_code">SKU:
+                <span t-esc="product.default_code"></span>
+            </h4>
+
+        </xpath>
+    </template>
+
+    <template id="product_tab_attributes"
+              inherit_id="corby_theme.product_details_tab_view"
+              active="False" customize_show="True" name="Show Spec On Tab">
+        <xpath expr="//hr[@id='hr_product_attributes_simple']" position="replace"/>
+        <xpath expr="//p[@id='product_attributes_simple']" position="replace"/>
+        <xpath expr="//ul[hasclass('nav-tabs')]/li[1]" position="after">
+            <li id="product_spec" class="nav-item">
+                <a data-toggle="tab" href="#tab_spec" class="nav-link">Specification</a>
+            </li>
+        </xpath>
+        <xpath expr="//div[hasclass('tab-content')]/div[@id='description']" position="after">
+            <div id="tab_spec" class="tab-pane fade">                
+                <section class="container" id="product_full_spec">
+                    <t t-set="atts" t-value="product.get_variant_groups()"/>
+                    <t t-if='len(atts)'>
+                        <div class="row">
+                            <div class='col-12' id='product_specifications'>
+                                <table class='table table-striped table-sm table-hover'>
+                                    <t t-foreach="atts.keys()" t-as="spec">
+                                        <t t-if="len(atts.keys())&gt;1">
+                                            <tr class="clickable" data-toggle="collapse" t-att-data-target="'.'+spec.split()[0]">
+                                                <th class="text-left" t-att-colspan="2"><t t-esc="spec"/></th>
+                                            </tr>
+                                        </t>
+                                        <tr t-foreach="atts[spec]" t-as="att" t-att-class="'collapse in show ' + spec.split()[0]">
+                                            <td class="spec-title" t-esc="att.attribute_id.name"/>
+                                            <td>
+                                                <t t-set='or_separator'>or</t>
+                                                <t t-esc="(' %s ' % or_separator).join(att.value_ids.mapped('name'))"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </table>
+                            </div>
+                        </div>
+                    </t>
+                </section>
+            </div>
+        </xpath>
+    </template>
+</odoo>

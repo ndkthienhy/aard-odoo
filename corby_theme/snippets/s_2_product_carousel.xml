@@ -1,0 +1,11 @@
+<odoo>
+    <template id="s_2_product" name="2 Product Carousel">
+        <section class="snippet_small_product_carousel small-carousel-row">
+            <div class="js_get_objects product_carousel_design"
+                 data-product_view="website_product_carousel.small_list_of_product_view"
+                 data-objects_in_slide="2" data-objects_limit="10"
+                 data-split_product_object="2"/>
+        </section>
+    </template>
+
+</odoo>

@@ -1,0 +1,9 @@
+<odoo>
+    <template id="s_blog_carousel" name="Blog Carousel">
+        <section class="s_blog_carousel mb8">
+            <div class="container">
+                <t t-call="corby_theme.blog_slider_content"/>
+            </div>
+        </section>
+    </template>
+</odoo>

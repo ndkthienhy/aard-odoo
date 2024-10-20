@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="website.contactus" name="Contact Us">
+        <t t-call="website.layout">
+            <div id="wrap ">
+                <div class="oe_structure"/>
+                <section class="img-header">
+                    <div class="container">
+                        <div class="row">
+                            <div class="section-title text-center">
+                                <h2 class="font-w-8"><span class="color">C</span>ontact <span class="color">
+                                    U</span>s
+                                </h2>
+                                <p class="text-black">Sed ut perspiciatis unde omnis iste natus error sit
+                                    voluptatem
+                                </p>
+                            </div>
+                            <!-- /.sc_layouts_title -->
+                        </div>
+                    </div>
+                </section>
+                <div class="container">
+                    <div class="row  pad15 mt48 mb48">
+                        <div class="col-md-8 col-sm-8 col-12 mb32">
+                            <div class="oe_structure">
+
+                            </div>
+                            <div class="text-center mt64" name="mail_button">
+                                <a t-attf-href="mailto:{{ res_company.email }}" class="btn btn-primary"
+                                   id="o_contact_mail">Send us an email
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-12">
+                            <t t-call="website.company_description"/>
+                            <section class="s_google_map"
+                                     data-map-type="ROADMAP"
+                                     data-map-color="" data-map-zoom="12"
+                                     data-map-gps="(50.854975,4.3753899)"
+                                     data-pin-style="Default"
+                                     style="overflow: hidden;"
+                                     data-pin-address="">
+                                <div class="map_container"
+                                     style="overflow: hidden;">
+                                    <div style="height: 100%; width: 100%;"/>
+                                </div>
+                            </section>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="website.company_description">
+        <div class="contact-us-right-details">
+            <h2 class="small-title mb8">
+                <span style="font-size: unset;" t-field="res_company.partner_id.name"/>
+            </h2>
+            <div class="address-description description mb8">
+                <span t-field="res_company.partner_id.website_description"/>
+            </div>
+            <div class="address-text first mb8">
+                <span t-field="res_company.partner_id" t-options='{"widget": "contact","fields": ["address"]}'/>
+            </div>
+            <div class="address-text second mb8">
+                <span t-field="res_company.partner_id"
+                      t-options='{"widget": "contact","fields": ["phone", "mobile"]}'/>
+            </div>
+            <div class="address-text second mb8">
+                <span t-field="res_company.partner_id" t-options='{"widget": "contact","fields": ["fax"]}'/>
+            </div>
+            <div class="address-text third mb8">
+                <span t-field="res_company.partner_id" t-options='{"widget": "contact","fields": ["email"]}'/>
+            </div>
+        </div>
+    </template>
+    <template id="website_crm.contactus_form" name="Contact Form" inherit_id="website.contactus" customize_show="True">
+        <xpath expr="//div[@name='mail_button']" position="replace">
+            <div class="contact_us_theme">
+                <form action="/website_form/"
+                      method="post"
+                      data-model_name="crm.lead"
+                      data-success_page="/contactus-thank-you"
+                      class="s_website_form"
+                      enctype="multipart/form-data">
+                    <div class="col-md-12">
+                        <div class="section">
+                            <label class="field prepend-icon width-100">
+                                <span class="wpcf7-form-control-wrap name">
+                                    <input type="text"
+                                           name="contact_name"
+                                           value=""
+                                           size="40"
+                                           class="inputbox wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
+                                           aria-required="true"
+                                           aria-invalid="false"
+                                           t-att-value="request.params.get('contact_name', '')"
+                                           placeholder="Enter Name"/>
+                                </span>
+                                <span class="field-icon">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="section colm colm6">
+                            <label class="field prepend-icon width-100">
+                                <span class="wpcf7-form-control-wrap tel">
+                                    <input type="tel"
+                                           name="phone"
+                                           value=""
+                                           size="40"
+                                           class="inputbox wpcf7-form-control wpcf7-text wpcf7-tel wpcf7-validates-as-required wpcf7-validates-as-tel"
+                                           aria-required="true"
+                                           aria-invalid="false"
+                                           t-att-value="request.params.get('phone', '')"
+                                           placeholder="Telephone"/>
+                                </span>
+                                <span class="field-icon">
+                                    <i class="fa fa-phone-square"></i>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="section">
+                            <label class="field prepend-icon width-100">
+                                <span class="wpcf7-form-control-wrap email">
+                                    <input type="email"
+                                           name="email_from"
+                                           value=""
+                                           size="40"
+                                           class="inputbox wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email"
+                                           aria-required="true"
+                                           aria-invalid="false"
+                                           t-att-value="request.params.get('email_from', '')"
+                                           placeholder="Email address"/>
+                                </span>
+                                <span class="field-icon">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="section">
+                            <label class="field prepend-icon width-100">
+                                <span class="wpcf7-form-control-wrap subject">
+                                    <input type="text"
+                                           name="name"
+                                           value=""
+                                           size="40"
+                                           class="inputbox wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
+                                           aria-required="true"
+                                           aria-invalid="false"
+                                           t-att-value="request.params.get('name', '')"
+                                           placeholder="Enter subject"/>
+                                </span>
+                                <span class="field-icon">
+                                    <i class="fa fa-lightbulb-o"></i>
+                                </span>
+                            </label>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 textarea">
+                        <div class="section">
+                            <label class="field prepend-icon width-100">
+                                <span class="wpcf7-form-control-wrap textarea-466">
+                                    <textarea
+                                            name="description"
+                                            cols="40"
+                                            rows="10"
+                                            class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required"
+                                            aria-required="true"
+                                            aria-invalid="false"
+                                            placeholder="Enter message">
+                                        <!--<t t-esc="request.params.get('description', '')"/>-->
+                                    </textarea>
+                                </span>
+                                <span class="field-icon">
+                                    <i class="fa fa-comments"></i>
+                                </span>
+                                <span class="input-hint">
+                                    <strong>
+                                        Hint:
+                                    </strong>
+                                    Please
+                                    enter
+                                    between
+                                    80
+                                    -
+                                    300
+                                    characters.
+                                </span>
+                            </label>
+                            <br/>
+                        </div>
+                    </div>
+                    <div class="form-group form-field o_website_form_required_custom">
+                        <div class="col-md-12 col-sm-8 mb24">
+                            <span class="o_website_form_recaptcha"/>
+                        </div>
+
+                    </div>
+                    <div class="col-md-3 submit-form">
+                        <input type="button"
+                               value="Submit"
+                               name="Submit" style="font-size: 20px;font-weight: bold;border-radius: 0;text-transform: uppercase;"
+                               class="btnEnvoyer btn btn-primary btn-lg greenBtn o_website_form_send"/>
+                        <span id="o_website_form_result"></span>
+                    </div>
+                </form>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

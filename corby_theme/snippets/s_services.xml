@@ -1,0 +1,62 @@
+<odoo>
+    <template id="s_services" name="Our Service">
+        <section id="features" class="features">
+            <div class="container">
+                <div class="row mb32 mt32">
+                    <div class="col-md-12">
+                        <div class="section">
+                            <!-- Single Feature Start -->
+                            <div class="col-md-3 col-sm-6 col-12 mt16 mb16">
+                                <div class="feat p-25 bx-shadow">
+                                    <i class="fa fa-tablet font-45"></i>
+                                    <h5 class="font-20 pt-15">Web UI Design</h5>
+                                    <h6 class="font-13 font-w-6">Lorem ipsum dolor sit amet,
+                                        consectetuer
+                                        adipiscing elit, sed diam nonummy nibh euismod voluptatem
+                                    </h6>
+                                </div>
+                            </div>
+                            <!-- Single Feature End -->
+                            <!-- Single Feature Start -->
+                            <div class="col-md-3 col-sm-6 col-12 mt16 mb16">
+                                <div class="feat p-25 bx-shadow active">
+                                    <i class="fa fa-leaf font-45"></i>
+                                    <h5 class="font-20 pt-15">Creative Design</h5>
+                                    <h6 class="font-13 font-w-6">Lorem ipsum dolor sit amet,
+                                        consectetuer
+                                        adipiscing elit, sed diam nonummy nibh euismod voluptatem
+                                    </h6>
+                                </div>
+                            </div>
+                            <!-- Single Feature End -->
+                            <!-- Single Feature Start -->
+                            <div class="col-md-3 col-sm-6 col-12 mt16 mb16">
+                                <div class="feat p-25 bx-shadow">
+                                    <i class="fa fa-rocket font-45"></i>
+                                    <h5 class="font-20 pt-15">Performance</h5>
+                                    <h6 class="font-13 font-w-6">Lorem ipsum dolor sit amet,
+                                        consectetuer
+                                        adipiscing elit, sed diam nonummy nibh euismod voluptatem
+                                    </h6>
+                                </div>
+                            </div>
+                            <!-- Single Feature End -->
+                            <!-- Single Feature Start -->
+                            <div class="col-md-3 col-sm-6 col-12 mt16 mb16">
+                                <div class="feat p-25 bx-shadow">
+                                    <i class="fa fa-star-o font-45"></i>
+                                    <h5 class="font-20 pt-15">Flexibility</h5>
+                                    <h6 class="font-13 font-w-6">Lorem ipsum dolor sit amet,
+                                        consectetuer
+                                        adipiscing elit, sed diam nonummy nibh euismod voluptatem
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+</odoo>

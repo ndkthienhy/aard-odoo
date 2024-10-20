@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="website_product_carousel.rendering_product_item_inherit_cart"
+              inherit_id="website_product_carousel.rendering_product_item"
+              name="Product Add to Cart" active="False"/>
+    <template id="list_of_product_view_inherit"
+              inherit_id="website_product_carousel.list_of_product_view">
+        <xpath expr="//div[hasclass('product-title')]"
+               position="replace">
+            <div class="product-title">
+                <h2 claa="mt8 mb8">
+                    <span t-esc="product_headline"/>
+                </h2>
+            </div>
+        </xpath>
+    </template>
+    <template id="small_list_of_product_view_inherit"
+              inherit_id="website_product_carousel.small_list_of_product_view">
+        <xpath expr="//div[hasclass('product-title')]"
+               position="replace">
+            <div class="product-title">
+                <h2 claa="mt8 mb8">
+                    <span t-esc="product_headline"/>
+                </h2>
+            </div>
+        </xpath>
+    </template>
+    <template id="rendering_product_item_inherit"
+              inherit_id="website_product_carousel.rendering_product_item">
+        <xpath expr="//div[hasclass('product_carousel_img')]/a"
+               position="replace">
+            <a itemprop="url" t-att-class="'main_img' if product.product_image_ids else ''"
+               t-att-href="'/shop/product/%s' % slug(product)">
+                <span itemprop="image"
+                      t-attf-content="{{request.httprequest.url_root}}web/image/product.template/{{product.id}}/image"
+                      t-field="product.image"
+                      t-options="{'widget': 'image', 'resize': None if product_image_big else '300x300', 'zoom': 'image'}"
+                      t-att-alt="product.name"/>
+            </a>
+            <a itemprop="url" class="hover_img d-none d-sm-block d-sm-none hidden-md" t-if="product.product_image_ids"
+               t-att-href="'/shop/product/%s' % slug(product)">
+                <span itemprop="image"
+                      t-attf-content="{{request.httprequest.url_root}}web/image/product.template/{{product.id}}/image"
+                      t-field="product.product_image_ids[0].image"
+                      t-options="{'widget': 'image', 'resize': None if product_image_big else '300x300', 'zoom': 'image'}"
+                      t-att-alt="product.name"/>
+            </a>
+        </xpath>
+    </template>
+    <template id="website_product_carousel.rendering_product_item_inherit_wishlist"
+              inherit_id="website_product_carousel.rendering_product_item"
+              name="Product WishList" active="True">
+        <xpath expr="//div[hasclass('product-carousel-price')]" position="inside">
+            <div class="carousel_wishlist_quick_view">
+                <t t-if="product.website_published and 'on' or 'off' == 'on'">
+                    <t t-set="in_wish"
+                       t-value="product.product_variant_ids &amp; request.env['product.wishlist'].current().mapped('product_id')"/>
+                    <a class="btn btn-link product-carousel-wishlist o_add_wishlist"
+                       t-att-disabled='in_wish or None' title="Add to Wishlist"
+                       t-att-data-product-product-id="product.product_variant_ids[0].id"
+                       data-action="o_wishlist">
+                        <!--<span class="fa fa-heart"/>-->
+                        <img src="/corby_theme/static/src/img/wishlist.svg" style="width:25px;"/>
+                    </a>
+                </t>
+                <span class="add-to-cart-carousel">
+                    <input name="product_id"
+                           t-att-value="product.product_variant_ids[0].id"
+                           type="hidden"/>
+                    <a class="btn btn-link product-carousel-add-to-cart"
+                       t-att-href="'/shop/product/%s' % slug(product)">
+                        <!--<i class="fa fa-shopping-cart"></i>-->
+                        <img src="/corby_theme/static/src/img/c_cart.svg" style="width:25px;"/>
+                    </a>
+                </span>
+                <t t-if="product.website_published">
+                    <a data-toggle="modal"
+                       href="#"
+                       class="quick-view-carousel btn btn-link"
+                       t-att-data-target="'#product_view'+str(product.id)">
+                        <!--<i class="fa fa-eye"></i>-->
+                        <img src="/corby_theme/static/src/img/magnifying-glass.svg" style="width:25px;"/>
+                    </a>
+                </t>
+            </div>
+        </xpath>
+    </template>
+    <template id="rendering_product_item_inherit_all_btn"
+              inherit_id="website_product_carousel.small_rendering_product_item"
+              name="Product WishList" active="True">
+        <xpath expr="//div[hasclass('product-carousel-price')]" position="inside">
+            <div class="carousel_wishlist_quick_view">
+                <t t-if="product.website_published and 'on' or 'off' == 'on'">
+                    <t t-set="in_wish"
+                       t-value="product.product_variant_ids &amp; request.env['product.wishlist'].current().mapped('product_id')"/>
+                    <a class="btn btn-link product-carousel-wishlist o_add_wishlist"
+                       t-att-disabled='in_wish or None' title="Add to Wishlist"
+                       t-att-data-product-product-id="product.product_variant_ids[0].id"
+                       data-action="o_wishlist">
+                        <!--<span class="fa fa-heart"/>-->
+                        <img src="/corby_theme/static/src/img/wishlist.svg" style="width:25px;"/>
+                    </a>
+                </t>
+                <span class="add-to-cart-carousel">
+                    <input name="product_id"
+                           t-att-value="product.product_variant_ids[0].id"
+                           type="hidden"/>
+                    <a class="btn btn-link product-carousel-add-to-cart"
+                       t-att-href="'/shop/product/%s' % slug(product)">
+                        <!--<i class="fa fa-shopping-cart"></i>-->
+                        <img src="/corby_theme/static/src/img/c_cart.svg" style="width:25px;"/>
+                    </a>
+                </span>
+                <t t-if="product.website_published">
+                    <a data-toggle="modal"
+                       href="#"
+                       class="quick-view-carousel btn btn-link"
+                       t-att-data-target="'#product_view'+str(product.id)">
+                        <!--<i class="fa fa-eye"></i>-->
+                        <img src="/corby_theme/static/src/img/magnifying-glass.svg" style="width:25px;"/>
+                    </a>
+                </t>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="website_product_carousel.products_item_extended_carousel"
+              inherit_id="website_product_carousel.rendering_product_item" active="False"/>
+    <template id="website_product_carousel.small_products_item_extended_carousel"
+              inherit_id="website_product_carousel.small_rendering_product_item" active="False">
+        <xpath expr="//div[hasclass('product-carousel-price')]"
+               position="inside">
+            <t t-if="product.website_published">
+                <a data-toggle="modal"
+                   href="#"
+                   class="quick-view-carousel btn btn-default btn-xs"
+                   t-att-data-target="'#product_view'+str(product.id)">
+                    <img src="/corby_theme/static/src/img/magnifying-glass.svg" style="width:25px;"/>
+                </a>
+            </t>
+        </xpath>
+    </template>
+    <template id="website_product_carousel.small_rendering_product_item_inherit_wishlist"
+              inherit_id="website_product_carousel.small_rendering_product_item"
+              name="Product WishList" active="False">
+        <xpath expr="//div[hasclass('product-carousel-price')]" position="inside">
+            <t t-if="product.website_published and 'on' or 'off' == 'on'">
+                <t t-set="in_wish"
+                   t-value="product.product_variant_ids &amp; request.env['product.wishlist'].current().mapped('product_id')"/>
+                <a class="btn btn-default btn-xs product-carousel-wishlist o_add_wishlist"
+                   t-att-disabled='in_wish or None' title="Add to Wishlist"
+                   t-att-data-product-product-id="product.product_variant_ids[0].id"
+                   data-action="o_wishlist">
+                    <img src="/corby_theme/static/src/img/wishlist.svg" style="width:25px;"/>
+                </a>
+            </t>
+        </xpath>
+    </template>
+    <template id="website_product_carousel.small_rendering_product_item_inherit_cart"
+              inherit_id="website_product_carousel.small_rendering_product_item"
+              name="Product Add to Cart" active="False">
+        <xpath expr="//div[hasclass('product-carousel-price')]"
+               position="inside">
+            <input name="product_id"
+                   t-att-value="product.product_variant_ids[0].id"
+                   type="hidden"/>
+            <a class="btn btn-default btn-xs product-carousel-add-to-cart"
+               t-att-href="'/shop/product/%s' % slug(product)">
+                <img src="/corby_theme/static/src/img/c_cart.svg" style="width:25px;"/>
+
+            </a>
+        </xpath>
+    </template>
+
+
+</odoo>

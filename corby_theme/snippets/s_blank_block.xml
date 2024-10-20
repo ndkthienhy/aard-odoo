@@ -1,0 +1,17 @@
+<odoo>
+    <template id="black_block" name="Blank Block 3 and 9">
+        <section class="">
+            <div class="container bg-white">
+                <div class="row pt32 pb32">
+                    <div class="col-md-3 d-none d-md-block col-lg-3 d-sm-none d-md-block">
+                        <div id="wrap-left" class="oe_structure oe_empty"/>
+                    </div>
+                    <div class="col-md-9 col-12 col-lg-9 col-sm-12">
+                        <div id="wrap-right" class="oe_structure oe_empty"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+</odoo>

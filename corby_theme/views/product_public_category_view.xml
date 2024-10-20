@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="product_public_category_view_inherit" model="ir.ui.view">
+        <field name="name">product.public.category.inherit</field>
+        <field name="model">product.public.category</field>
+        <field name="inherit_id"
+               ref="website_sale.product_public_category_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="display_name" position="after">
+                <field name="products_count"/>
+            </field>
+        </field>
+    </record>
+    <record id="product_public_category_form_inherit_view _inherit" model="ir.ui.view">
+        <field name="name">product.public.category.form</field>
+        <field name="model">product.public.category</field>
+        <field name="inherit_id"
+               ref="website_sale.product_public_category_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_left')]" position="after">
+                <div>
+                    <group name="Banner Settings">
+                        <field name="products_count"/>
+                    </group>
+                </div>
+                <div class="oe_clear"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

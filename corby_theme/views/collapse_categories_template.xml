@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="website_sale.option_collapse_products_categories"
+        name="Collapsible Category List"
+        inherit_id="website_sale.products_categories"
+        active="True" customize_show="True" priority="20">
+        <xpath expr="//div[@id='products_grid_before']/ul" position="replace">
+            <div id="shop_category">
+                <h2 class="category-title">
+                    <span>Categories Test</span>
+                </h2>
+                <div id="category-list">
+                    <ul id="o_shop_collapse_category">
+                        <t t-foreach="categories" t-as="categ">
+                            <li t-att-class="'active' if categ.id == int(category or 0) else ''">
+                                <i t-if="categ.child_id"
+                                    t-attf-class="text-primary child_cat fa #{'fa-chevron-down' if categ.id in parent_category_ids else 'fa-chevron-right'}" />
+                                <a
+                                    t-att-href="keep('/shop/category/' + slug(categ), category=0)"
+                                    t-field="categ.name" /> (<span t-field="categ.products_count" />
+                                )
+                                <ul t-if="categ.child_id"
+                                    class="nav nav-pills nav-stacked nav-hierarchy"
+                                    t-att-style="'display:block;' if categ.id in parent_category_ids else 'display:none;'">
+                                    <t t-foreach="categ.child_id"
+                                        t-as="categ">
+                                        <t
+                                            t-call="website_sale.option_collapse_categories_recursive" />
+                                    </t>
+                                </ul>
+                            </li>
+                        </t>
+                    </ul>
+                </div>
+            </div>
+        </xpath>
+    </template>
+    <template id="website_sale.option_collapse_categories_recursive"
+        name="Collapse Category Recursive" customize_show="False">
+        <li t-att-class="'active' if categ.id == int(category or 0) else None">
+            <i t-if="categ.child_id"
+                t-attf-class="text-primary fa #{'fa-chevron-down' if categ.id in parent_category_ids else 'fa-chevron-right'}" />
+            <a
+                t-att-href="keep('/shop/category/' + slug(categ), category=0)" t-field="categ.name" />
+            (<t t-esc="categ.products_count" />) <ul t-if="categ.child_id"
+                t-att-style="'display:block;' if categ.id in parent_category_ids else 'display:none;'">
+                <t t-foreach="categ.child_id" t-as="categ">
+                    <t t-call="website_sale.option_collapse_categories_recursive" />
+                </t>
+            </ul>
+        </li>
+    </template>
+    <template id="website_sale.products_categories"
+        inherit_id="website_sale.products"
+        active="True" customize_show="True" name="Product Categories">
+        <xpath expr="//div[@id='products_grid_before']" position="inside">
+            <ul>
+                <li t-att-class=" '' if category else 'active' ">
+                    <a t-att-href="keep('/shop',category=0)">All Products</a>
+                </li>
+                <t t-foreach="categories" t-as="c">
+                    <t t-call="website_sale.categories_recursive" />
+                </t>
+            </ul>
+        </xpath>
+        <xpath expr="//div[@id='products_grid_before']" position="attributes">
+            <attribute name="class">col-sm-12 col-md-12 mb24</attribute>
+        </xpath>
+        <xpath expr="//div[@id='products_grid']" position="attributes">
+            <attribute name="class">col-md-12 col-sm-12</attribute>
+        </xpath>
+    </template>
+
+
+    <template id="website_sale_option_collapse_categories_recursive_inherit"
+        inherit_id="website_sale.option_collapse_products_categories"
+        name="Collapse Category Recursive">
+        <xpath expr="//i[@t-if='categ.child_id']" position="attributes">
+            <attribute name="t-attf-class">text-primary child_of_child_cat fa #{'fa-chevron-down' if
+                categ.id in parent_category_ids else 'fa-chevron-right child_of_child_cat'}
+            </attribute>
+        </xpath>
+    </template>
+</odoo>

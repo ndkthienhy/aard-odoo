@@ -1,0 +1,48 @@
+<odoo>
+    <template id="s_theme_banner" name="Theme banner">
+        <section>
+            <div class="row">
+                <div id="myCarousel1544629000328"
+                        class="col s_carousel s_carousel_default carousel slide" data-interval="10000">
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel1544629000328" data-slide-to="0"
+                            class="active"/>
+                        <li data-target="#myCarousel1544629000328" data-slide-to="1"/>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item oe_custom_bg oe_img_bg active"
+                                data-name="Slide">
+                            <!-- <div class="container"> -->
+                                <div class="row content">
+                                    <img src="/corby_theme/static/src/img/shop2_slide2.jpg"
+                                            class="img img-fluid" style="margin: auto;"/>
+                                </div>
+                            <!-- </div> -->
+                        </div>
+                        <div class="carousel-item oe_custom_bg oe_img_bg"
+                                data-name="Slide">
+                            <!-- <div class="container"> -->
+                                <div class="row content">
+                                    <img src="/corby_theme/static/src/img/shop2_slide1.jpg"
+                                            class="img img-fluid" style="margin: auto;"/>
+                                </div>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                    <div class="carousel-control-prev" data-target="#myCarousel1544629000328"
+                            data-slide="prev" role="img" aria-label="Previous" title="Previous">
+                        <span class="carousel-control-prev-icon"/>
+                        <span class="sr-only o_default_snippet_text">Previous</span>
+                    </div>
+                    <div class="carousel-control-next" data-target="#myCarousel1544629000328"
+                            data-slide="next" role="img" aria-label="Next" title="Next">
+                        <span class="carousel-control-next-icon"/>
+                        <span class="sr-only o_default_snippet_text">Next</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </template>
+
+</odoo>

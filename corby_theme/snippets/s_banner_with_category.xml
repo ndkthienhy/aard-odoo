@@ -1,0 +1,23 @@
+<odoo>
+    <template id="homepage_category" name="Homepage Category">
+        <section>
+            <div class="container">
+                <div class="porto-links-block wpb_content_element  m-b-none background-color-light mb24">
+                    <div class="links-title">Top Categories</div>
+                    <div class="links-content homepage-category">
+                        <ul>
+                            <t t-set="categories"
+                               t-value="website.get_categories() if website else None"/>
+                            <t t-if="categories">
+                                <t t-foreach="categories['categories']" t-as="categ">
+                                    <t t-call="tecspek_all_options.menu_categories_recursive"/>
+                                </t>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+</odoo>

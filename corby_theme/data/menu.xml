@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="about_us_page" model="website.menu">
+            <field name="name">About Us</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">33</field>
+            <field name="url">/aboutus</field>
+            <field name="website_id" ref="website.default_website"/>
+        </record>
+        <!--<record id="business_homepage" model="website.menu">
+            <field name="name">Business</field>
+            <field name="url">/business-homepage</field>
+            <field name="parent_id" ref="website.menu_homepage"/>
+            <field name="sequence" type="int">2</field>
+        </record>
+        <record id="Ecommerece_homepage" model="website.menu">
+            <field name="name">E-commerce</field>
+            <field name="url">/</field>
+            <field name="parent_id" ref="website.menu_homepage"/>
+            <field name="sequence" type="int">1</field>
+        </record>-->
+    </data>
+</odoo>

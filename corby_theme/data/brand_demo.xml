@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+   <data noupdate="1">
+    	<record id="product_brand_1" model="product.brand">
+            <field name="name">Ecko</field>
+            <field name="brand_image" type="base64" file="corby_theme/static/src/img/1.png"/>
+            <field name="is_website_publish">True</field>
+        </record>
+
+         <record id="product_brand_2" model="product.brand">
+            <field name="name">Diesel</field>
+            <field name="brand_image" type="base64" file="corby_theme/static/src/img/2.png"/>
+             <field name="is_website_publish">True</field>
+        </record>
+
+         <record id="product_brand_3" model="product.brand">
+            <field name="name">Calvin Klein</field>
+            <field name="brand_image" type="base64" file="corby_theme/static/src/img/3.png"/>
+             <field name="is_website_publish">True</field>
+        </record>
+        
+         <record id="product_brand_4" model="product.brand">
+            <field name="name">Burton</field>
+            <field name="brand_image" type="base64" file="corby_theme/static/src/img/4.png"/>
+             <field name="is_website_publish">True</field>
+        </record>
+        
+        <record id="product_brand_5" model="product.brand">
+            <field name="name">Agatha</field>
+            <field name="brand_image" type="base64" file="corby_theme/static/src/img/5.png"/>
+            <field name="is_website_publish">True</field>
+        </record>
+        
+          <record id="product_brand_6" model="product.brand">
+            <field name="name">Adidas</field>
+            <field name="brand_image" type="base64" file="corby_theme/static/src/img/6.png"/>
+              <field name="is_website_publish">True</field>
+        </record>
+       <record id="product_brand_7" model="product.brand">
+            <field name="name">Lee</field>
+            <field name="brand_image" type="base64" file="corby_theme/static/src/img/1.png"/>
+           <field name="is_website_publish">True</field>
+        </record>
+
+         <record id="product_brand_8" model="product.brand">
+            <field name="name">Puma</field>
+            <field name="brand_image" type="base64" file="corby_theme/static/src/img/2.png"/>
+             <field name="is_website_publish">True</field>
+        </record>
+     </data>   
+</odoo>

@@ -1,0 +1,17 @@
+<odoo>
+    <template id="theme_customize_inherit" inherit_id="website.theme_customize">
+        <xpath expr="//content[@id='theme_customize_content_colors']" position="after">
+            <content id="theme_customize_content_footer" string="Footer" title="Choose your Footer">
+                <more data-depends="">
+                    <list>
+                        <opt id="option_footer_1" string="Footer 1"
+                             data-xmlid="corby_theme.footer_default">
+                            Footer 1
+                        </opt>
+                    </list>
+                </more>
+            </content>
+        </xpath>
+    </template>
+
+</odoo>

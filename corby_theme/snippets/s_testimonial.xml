@@ -1,0 +1,44 @@
+<odoo>
+    <template id="s_testimonial_slider" name="Testimonial Slider">
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="testimonial-bg mt64 mb32">
+                        <div id="testimonial-slider" class="owl-carousel">
+                            <div class="testimonial">
+                                <p class="description">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Donec at augue sed elit eleifend tempus. Etiam malesuada
+                                    vulputate justo quis.
+                                </p>
+                                <div class="pic">
+                                    <img src="/corby_theme/static/src/img/team-1.jpg" alt=""/>
+                                </div>
+                                <h3 class="title">Williamson,</h3>
+                                <br/>
+                                <span class="post">Web Developer</span>
+                            </div>
+
+                            <div class="testimonial">
+                                <p class="description">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Donec at augue sed elit eleifend tempus. Etiam malesuada
+                                    vulputate justo quis.
+                                </p>
+                                <div class="pic">
+                                    <img src="/corby_theme/static/src/img/team-1.jpg" alt=""/>
+                                </div>
+                                <h3 class="title">kristiana,</h3>
+                                <br/>
+                                <span class="post">Web Designer</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+    </template>
+
+</odoo>

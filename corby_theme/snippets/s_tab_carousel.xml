@@ -1,0 +1,57 @@
+<odoo>
+    <template id="s_tab_carousel" name="Tab Carousel">
+        <section>
+            <div class="container">
+                <div class="tab" role="tabpanel">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                        <li role="presentation" class="nav-item">
+                            <a href="#Section1" aria-controls="home" role="tab"
+                                class="nav-link active"
+                                data-toggle="tab">FEATURED PRODUCTS
+                            </a>
+                        </li>
+                        <li role="presentation" class="nav-item">
+                            <a href="#Section2" aria-controls="profile" role="tab" class="nav-link"
+                                data-toggle="tab">LATEST PRODUCTS
+                            </a>
+                        </li>
+                        <li role="presentation" class="nav-item">
+                            <a href="#Section3" aria-controls="messages" role="tab" class="nav-link"
+                                data-toggle="tab">BEST SELLING
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content tabs">
+                        <div role="tabpanel" class="tab-pane fade show active" id="Section1">
+                            <div
+                                class="js_get_objects product_carousel_design headline_off text-center"
+                                data-product_view="website_product_carousel.list_of_product_view"
+                                data-objects_in_slide="4" data-split_product_object="2"
+                                data-objects_limit="10" />
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="Section2">
+                            <div
+                                class="js_get_objects product_carousel_design headline_off text-center"
+                                data-product_view="website_product_carousel.list_of_product_view"
+                                data-objects_in_slide="4" data-split_product_object="2"
+                                data-objects_limit="10" />
+
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="Section3">
+                            <div
+                                class="js_get_objects product_carousel_design headline_off text-center"
+                                data-product_view="website_product_carousel.list_of_product_view"
+                                data-objects_in_slide="4" data-split_product_object="2"
+                                data-objects_limit="10" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+</odoo>

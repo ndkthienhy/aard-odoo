@@ -1,0 +1,45 @@
+.website_blog .o_blog_post_teaser {
+    color: black;
+}
+#main_column{
+    address{
+        color:black
+    }
+    .fa-tags{
+        color:black;
+    }
+    span:nth-child(2){
+        color:black;
+    }
+    div.text-muted > div > a{
+        border: 1px solid;
+        padding: 4px;
+        background: $-alpha;
+        color: white;
+        font-weight: bold;
+        margin-left: 8px;
+    }
+}
+#blog_right_column{
+    .nav-stacked{
+        li{
+            a{
+                border: 1px solid;
+                padding: 4px;
+                background: $-alpha;
+                color: white;
+                font-weight: bold;
+                margin-left: 8px;
+                border-radius: 0;
+            }
+        }
+    }
+    .badge {
+        color: black;
+        background-color: white;
+        padding: 4px 7px;
+    }
+}
+.website_blog .o_blog_cover_container.o_list_cover {
+    height: 341px!important;
+}

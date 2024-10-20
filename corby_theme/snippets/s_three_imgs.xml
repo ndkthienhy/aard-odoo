@@ -1,0 +1,29 @@
+<odoo>
+    <template id="s_three_imgs" name="Two Images Block">
+        <section class="mt64 mb64">
+            <div class="ttbannerblock" style="display: inline-block;">
+                <div class="ttbanner1 ttbanner col-6 col-sm-6">
+                    <div class="ttbanner-main">
+                        <div class="ttbanner-img">
+                            <a href="#">
+                                <img alt="banner-01.jpg"
+                                     src="/corby_theme/static/src/img/banner-01.jpg"/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="ttbanner2 ttbanner col-6 col-sm-6">
+                    <div class="ttbanner-main">
+                        <div class="ttbanner-img">
+                            <a href="#">
+                                <img alt="banner-02.jpg"
+                                     src="/corby_theme/static/src/img/banner-02.jpg"/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+</odoo>

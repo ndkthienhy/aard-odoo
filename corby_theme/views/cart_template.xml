@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- [Nguyen Duy Khanh] Checkout -->
+    <template id="cart_summary_inherit" inherit_id="website_sale.cart_summary">
+        <xpath expr="//div[hasclass('toggle_summary_div')]" position="replace">
+            <div class="toggle_summary_div d-none d-xl-block">
+                <div class="card-wrapper shadow-sm " style="overflow-y: auto;">
+                    <div class="card-group p_cart_group" style="margin: 0;" data-p_cart_id="1" data-p_cart_name="ORDER REVIEW">
+                        <div class="card card-default">
+                            <div class="card-header p_cart_header" style="padding: 15px 15px;">
+                                <div style="font-weight: 600;">
+                                    <span>ORDER REVIEW</span>
+                                    <span class="fa fa-caret-down p_cart_icon pull-right"/>
+                                </div>
+                            </div>
+                            <div class="card-body p_cart_body" style="padding: 0 15px 15px;"> 
+                                <table class="table table-striped table-sm" id="cart_products" t-if="website_sale_order and website_sale_order.website_order_line">
+                                    <tbody>
+                                        <tr t-foreach="website_sale_order.website_order_line" t-as="line">
+                                            <td class='' colspan="2" t-if="not line.product_id.product_tmpl_id"></td>
+                                            <td class='td-img' t-if="line.product_id.product_tmpl_id">
+                                                <span t-field="line.product_id.image_small" t-options="{'widget': 'image', 'class': 'rounded'}" />
+                                            </td>
+                                            <td class='td-product_name' t-if="line.product_id.product_tmpl_id">
+                                                <div>
+                                                    <strong t-field="line.name_short" />
+                                                </div>
+                                                <div t-esc="line.product_uom_qty" />
+                                            </td>
+                                            <td class="text-center td-price">
+                                                <span t-field="line.price_reduce_taxexcl" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" groups="account.group_show_line_subtotals_tax_excluded" />
+                                                <span t-field="line.price_reduce_taxinc" style="white-space: nowrap;" t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}" groups="account.group_show_line_subtotals_tax_included" />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+                <div class="card-wrapper shadow-sm mt-4" style="overflow-y: auto;">
+                    <div class="card-group p_cart_group" data-p_cart_id="2" data-p_cart_name="BILLING SUMMARY">
+                        <div class="card card-default">
+                            <div class="card-header p_cart_header" style="padding: 15px 15px;">
+                                <div style="font-weight: 600;">
+                                    <span>BILLING SUMMARY</span>
+                                    <span class="fa fa-caret-down p_cart_icon pull-right"/>
+                                </div>
+                            </div>
+                            <div class="card-body p_cart_body" style="padding: 0 15px 15px;">
+                                <t t-call="website_sale.total">
+                                    <t t-set='redirect'>/shop/payment</t>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="website_sale.reduction_code" inherit_id="website_sale.total" active="False" customize_show="False" name="Promo Code"/>
+    <template id="reduction_code_summary" inherit_id="website_sale.cart_summary" active="True" customize_show="True" name="Promo Code">
+        <xpath expr="//div[hasclass('card-wrapper')][1]" position="after">
+            <div class="card-wrapper shadow-sm mt-4" style="overflow-y: auto;">
+                <div class="card-group p_cart_group" data-p_cart_id="2" data-p_cart_name="DISCOUNT CODES">
+                    <div class="card card-default">
+                        <div class="card-header p_cart_header" style="padding: 15px 15px;">
+                            <div style="font-weight: 600;">
+                                <span>DISCOUNT CODES</span>
+                                <span class="fa fa-caret-down p_cart_icon pull-right"/>
+                            </div>
+                        </div>
+                        <div class="card-body p_cart_body" style="padding: 0 15px 15px;">
+                            <span class=''>
+                                <t t-set='force_coupon' t-value="website_sale_order.pricelist_id.code or request.params.get('code_not_available')"/>
+                                <div class="coupon_form">
+                                    <t t-call="website_sale.coupon_form"/>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="checkout_inherit" inherit_id="website_sale.checkout">
+        <xpath expr="//t[@t-if='not only_services']" position="replace">        
+            <div class="row mt-4">
+                <div class="col-lg-12">
+                    <h3 class="o_page_header mt16 mb4">Shipping Address</h3>
+                    <form action="/shop/address" method="post" class="float-right">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                        <a title="Add an address" role="button" href="#" class='a-submit mb16'>
+                            <i class="fa fa-address-card-o"/>
+                        </a>
+                    </form>
+                </div>
+                <div class="col-lg-12">
+                    <div class="row mt8">
+                        <t t-foreach="shippings" t-as="ship">
+                            <div class="col-md-12 col-lg-6 one_kanban">
+                                <t t-call="website_sale.address_kanban">
+                                    <t t-set="actual_partner" t-value="order.partner_id" />
+                                    <t t-set='contact' t-value="ship"/>
+                                    <t t-set='selected' t-value="order.partner_shipping_id==ship"/>
+                                    <t t-set='readonly' t-value="bool(len(shippings)==1)"/>
+                                    <t t-set='edit_billing' t-value="bool(ship==order.partner_id)"/>
+                                </t>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('justify-content-between')]" position="attributes">
+            <attribute name="class">d-flex justify-content-between mt-3 border-0</attribute>
+        </xpath>
+    </template>
+    <!-- End  -->
+</odoo>

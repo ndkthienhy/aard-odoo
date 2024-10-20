@@ -1,0 +1,20 @@
+<odoo>
+    <template id="s_img_contain" name="Image With Contain">
+        <section class="ttbannerblock">
+            <div class="container">
+                <div class="ttbanner1 ttbanner">
+                    <div class="ttbanner-main">
+                        <div class="ttbanner-img">
+                            <a href="#">
+                                <img src="/corby_theme/static/src/img/left-banner-290x509.jpg"
+                                     alt="Left-Banner" class="img-fluid"
+                                     style="margin: auto; width:100%;"/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+</odoo>

@@ -1,0 +1,70 @@
+<odoo>
+    <!-- [Nguyen Duy Khanh] Added snippet Category Grid View -->
+    <template id="s_product_advance_filter" name="Product Advance Filter">
+        <section>
+            <t t-set="filter_categories"
+                t-value="website.get_categories() if website else None"/>
+            <div t-if="not not_show_title" class="bg-main-color py-2 px-3 mb24">
+                <h6 class="pt-2 text-uppercase font-weight-bold">
+                    <t t-if="search">
+                        Search By Filters
+                    </t>
+                    <t t-else="">
+                        Quick Filters
+                    </t>
+                </h6>
+            </div>
+            <div id="sl-filter" t-if="filter_categories">
+                <div class="card-wrapper shadow-sm" style="overflow-y: auto;">
+                    <t t-foreach="filter_categories['categories']" t-as="categ">
+                        <t t-set="filter_ids"
+                t-value="categ.filter_ids if categ.filter_ids else None"/>
+                        <div t-if="filter_ids" class="card-group p_filter_group" style="margin: 0;" t-att-data-p_filter_id="categ.id" t-att-data-p_filter_name="categ.name">
+                            <div class="card card-default">
+                                <div class="card-header p_filter_header" style="padding: 15px 15px;">
+                                    <div style="font-weight: 600;">
+                                        <span><t t-raw="categ.name"/></span>
+                                        <span class="fa fa-minus p_filter_icon pull-right"/>
+                                    </div>
+                                </div>
+                                <div class="card-body p_filter_body" style="padding: 0 15px 15px;">
+                                    <t t-foreach="filter_ids" t-as="p_filter">
+                                        <t t-set="filter_values" t-value="p_filter.value_ids"/>
+                                        <div t-if="p_filter.default_fold">
+                                            <div class="my-2 font-weight-bold">
+                                                <span><t t-raw="p_filter.name"/></span>
+                                            </div>
+                                            <select class="form-control" t-attf-id="Select#{p_filter.value_ids}"
+                                            onchange="location = this.value;">
+                                                <option></option>
+                                                <t t-foreach="filter_values" t-as="ftr_value">
+                                                    <div class="form-check mt8 mb8">
+                                                        <option class="fltr_box form-check-label" t-attf-value="/shop?filter=#{str(p_filter.id)+'-'+str(ftr_value.id)}" t-att-checked="'checked' if selected_value_ids and ftr_value.id in selected_value_ids.ids else None">
+                                                            <t t-raw="ftr_value.name"/>
+                                                        </option>
+                                                    </div>
+                                                </t>
+                                            </select>
+                                        </div>
+                                        <div t-else="">
+                                            <t t-foreach="filter_values" t-as="ftr_value">
+                                                <div class="form-check mt8 mb8">
+                                                    <label class="fltr_box form-check-label">
+                                                        <input type="checkbox" name="filter" class="form-check-input" t-att-value="str(p_filter.id)+'-'+str(ftr_value.id)" t-att-checked="'checked' if selected_value_ids and ftr_value.id in selected_value_ids.ids else None" t-attf-onchange="window.location.href='/shop?filter=#{str(p_filter.id)+'-'+str(ftr_value.id)}'"/>
+                                                        <span class="flt_label"><t t-raw="ftr_value.name"/></span>
+                                                        <span class="flt_mark flt_label"></span>
+                                                    </label>
+                                                </div>
+                                            </t>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </section>
+    </template>
+
+</odoo>

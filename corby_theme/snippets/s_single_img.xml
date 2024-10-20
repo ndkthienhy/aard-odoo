@@ -1,0 +1,17 @@
+<odoo>
+    <template id="s_img_contain" name="Image With Contain">
+        <section class="ttbannerblock" style="display: inline-block;">
+            <div class="ttbanner1 ttbanner col-12 col-sm-12">
+                <div class="ttbanner-main">
+                    <div class="ttbanner-img">
+                        <a href="#">
+                            <img alt="banner-01.jpg"
+                                 src="/corby_theme/static/src/img/bottombanner-1.jpg"/>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+</odoo>

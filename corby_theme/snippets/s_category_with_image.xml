@@ -1,0 +1,48 @@
+<odoo>
+    <!-- [Nguyen Duy Khanh] Added snippet Category Grid View -->
+    <template id="grid_categories_recursive" name="Category Grid Recursive">
+        <div class="col-md-4 col-sm-6 col-12">
+            <div class="position-relative grid-view-items">
+                <div class="oe_cat_image">
+                    <a t-att-href="'/shop/category/%s' % slug(categ)">
+                        <img t-att-src="website.image_url(categ, 'image', '400x650')"
+                            t-att-alt="categ.name"
+                            class="img img-responsive img-fluid rounded border border-light"/>
+                    </a>
+                </div>            
+                <div class="oe_cat_name">
+                    <h4 class="text-uppercase font-weight-bold"><t t-esc='categ.name'/></h4>
+                    <a t-att-href="'/shop/category/%s' % slug(categ)">
+                        View Collection <i class="fa fa-caret-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- <t t-if="categ.child_id">
+            <t t-foreach="categ.child_id" t-as="categ">
+                <t t-call="corby_theme.grid_categories_recursive"/>
+            </t>
+        </t> -->
+    </template>
+    <template id="s_grid_category" name="Category Grid View">
+        <section>
+            <t t-set="categories"
+                t-value="website.get_categories() if website else None"/>
+            <div class="bg-main-color py-2 px-3 mb24">
+                <h6 class="pt-2 text-uppercase font-weight-bold">
+                    Shop By Category
+                </h6>
+            </div>
+            <div class="category-grid">
+                <div class="row">
+                    <t t-if="categories">
+                        <t t-foreach="categories['categories']" t-as="categ">
+                            <t t-call="corby_theme.grid_categories_recursive"/>
+                        </t>
+                    </t>
+                </div>
+            </div>
+        </section>
+    </template>
+
+</odoo>

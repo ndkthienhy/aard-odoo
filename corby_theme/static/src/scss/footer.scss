@@ -1,0 +1,319 @@
+#footer {
+    background-color: #272723;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    font-size: .9em;
+    padding: 0;
+    position: relative;
+    clear: both;
+    color: #a8a8a8;
+	.container {
+		background-color: initial !important;
+		color: #ffffff;
+	}
+}
+footer.o_footer {
+    background-color: transparent !important;
+    color: #212529;
+}
+/*-------------------------------------Start TT-CMS Footer Services------------------------------*/
+footer .container .row .footer-left-cms {
+  padding: 15px 30px;
+}
+#ttcmsfooterservice{
+	float: left;
+	width: 100%;
+}
+#ttcmsfooterservice .title_block {
+  display: none;
+}
+#ttcmsfooterservice .block_content {
+  float: left;
+  width: 100%;
+}
+#ttcmsfooterservice .block_content > div {
+  padding: 15px 0;
+}
+#ttcmsfooterservice .block_content > div:last-child {
+  border: none;
+}
+#ttcmsfooterservice .block_content > div .ttcontent_inner .service .service-icon {
+  width: 62px;
+  height: 52px;
+  float: left;
+}
+#ttcmsfooterservice .block_content > div .ttcontent_inner .service .service-icon.ttshipping_img {
+  background: transparent url("TemplateTrip/images/services-sprite.png") no-repeat scroll -4px -14px;
+}
+#ttcmsfooterservice .block_content > div:hover .ttcontent_inner .service .service-icon.ttshipping_img {
+  background-position:-80px -14px;
+}
+#ttcmsfooterservice .block_content > div .ttcontent_inner .service .service-icon.ttsupport_img {
+  background: transparent url("TemplateTrip/images/services-sprite.png") no-repeat scroll -4px -110px;
+}
+#ttcmsfooterservice .block_content > div:hover .ttcontent_inner .service .service-icon.ttsupport_img {
+  background-position:-80px -110px;
+}
+#ttcmsfooterservice .block_content > div .ttcontent_inner .service .service-icon.ttsaving_img {
+  background: transparent url("TemplateTrip/images/services-sprite.png") no-repeat scroll -4px -205px;
+}
+#ttcmsfooterservice .block_content > div:hover .ttcontent_inner .service .service-icon.ttsaving_img {
+  background-position:-80px -205px;
+}
+#ttcmsfooterservice .block_content > div .ttcontent_inner .service .service-icon.ttmoneyback_img {
+  background: transparent url("TemplateTrip/images/services-sprite.png") no-repeat scroll -4px -297px;
+}
+#ttcmsfooterservice .block_content > div:hover .ttcontent_inner .service .service-icon.ttmoneyback_img {
+  background-position:-80px -297px;
+}
+#ttcmsfooterservice .block_content > div .ttcontent_inner .service .service-icon.ttshopping_img {
+  background: transparent url("TemplateTrip/images/services-sprite.png") no-repeat scroll -4px -391px;
+}
+#ttcmsfooterservice .block_content > div .ttcontent_inner .service .service-icon.ttawardwinner_img {
+  background: transparent url("TemplateTrip/images/services-sprite.png") no-repeat scroll -4px -486px;
+}
+#ttcmsfooterservice .block_content > div .ttcontent_inner .service .service-content {
+  padding: 5px 15px;
+  display:inline-block;
+}
+#ttcmsfooterservice .block_content > div .ttcontent_inner .service .service-content .service-title {
+  color: #444444;
+  font: 300 16px/24px "Roboto",Helvetica,sans-serif;
+  letter-spacing: 0.4px;
+}
+#ttcmsfooterservice .block_content > div .ttcontent_inner .service .service-content .service-desc {
+  color: #888888;
+  font: 300 13px/18px "Roboto",Helvetica,sans-serif;
+  letter-spacing: 0.4px;
+}
+#ttcmsfooterservice .block_content > div:hover .ttcontent_inner .service .service-content .service-title {
+  color: #000000;
+}
+
+@media (max-width: 1200px) {
+  #ttcmsfooterservice .block_content > div .ttcontent_inner .service .service-content .service-title {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 1199px) {
+	#ttcmsfooterservice .block_content > div .ttcontent_inner .service .service-content {
+		padding: 5px 0;
+	}
+}
+@media (max-width: 991px) {
+  #ttcmsfooterservice h5 {
+	 display: block;
+  }
+  #ttcmsfooterservice{
+  	padding:0;
+  }
+  #ttcmsfooterservice .block_content {
+  	padding:0 10px;
+  }
+  footer > div > .row > div.footer-column {
+	 padding: 0;
+  }
+  footer .container .row .footer-left-cms {
+  	//padding: 0;
+  }
+}
+.ttshipping, .ttsupport, .ttsaving, .ttmoneyback{
+    img{
+        width: 44px;
+        display: inline-block;
+    }
+}
+/*-------------------------------------Start TT-CMS Footer Services------------------------------*/
+/*------------------------------------- Footer Bottom Social Links Strat ------------------------------------*/
+.follow-us h5 {
+	display: none;
+	cursor: pointer;
+}
+.follow-us {
+    float: left;
+    padding: 0;
+	margin: 20px auto auto;
+    width: 100%;
+}
+.follow-us ul {
+	float: left;
+	width: 100%;
+	margin: 0;
+}
+.follow-us ul li {
+	display: inline-block;
+	margin: 0 5px 0 0;
+}
+.follow-us ul.list-unstyled li {
+	display: inline-block;
+	margin: 0 5px 0 0;
+}
+.follow-us .social-icon-block li {
+    float: none;
+    margin: 0 3px;
+	display:inline-block;
+}
+.follow-us .social-icon-block ul li a {
+ 	background-color: #444444;
+    border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+    color: white;
+    display: inline-block;
+    height: 40px;
+    padding: 10px;
+    text-align: center;
+    width: 40px;
+	font-size:18px;
+}
+.follow-us ul li a {
+	background: #f2f2f2;
+    color: #FFF;
+    display: inline-block;
+	border-radius: 50%;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-khtml-border-radius: 50%;
+    height: 30px;
+    padding: 4px;
+    text-align: center;
+    width: 30px;
+}
+.follow-us ul li a i {
+    font-size: 16px;
+    font-weight: normal;
+}
+.follow-us ul li a i.fa-facebook {
+	color: #145ab1;
+}
+.follow-us ul li.facebook:hover a {
+	background: #145ab1;
+}
+.follow-us ul li a i.fa-twitter {
+	color: #1da1f2;
+}
+.follow-us ul li.twitter:hover a {
+	background: #1da1f2;
+}
+.follow-us ul li a i.fa-rss {
+	color: #ff6600;
+}
+.follow-us ul li.rss:hover a {
+	background: #ff6600;
+}
+.follow-us ul li a i.fa-google-plus {
+	color: #ff0000;
+}
+.follow-us ul li.google-plus:hover a {
+	background: #ff0000;
+}
+.follow-us ul li:hover a i {
+	color: #FFF;
+}
+.follow-us .social-icon-block .social-icon-inner {
+    float: left;
+    margin: 35px 0;
+    width: 100%;
+}
+@media (max-width: 991px) {
+	 .follow-us {
+		margin: 0;
+		float: left;
+		width: 100%;
+	}
+	.follow-us h5 {
+		display: block;
+	}
+	.follow-us ul li {
+		float: none;
+	}
+}
+/*------------------------------------- Footer Bottom Social Links End ----------------------------------------*/
+/* ---------------------- Start TemplateTrip - TT CMS Footer Info  --------------------------*/
+			#ttcmsfooter {
+				/*border-bottom: 1px solid #ededed;*/
+				float: left;
+				padding: 40px 0;
+				text-align: center;
+				width: 100%;
+			}
+			/*.merge-links {
+				border-left: 1px solid #ededed;
+				border-right: 1px solid #ededed;
+			}*/
+			.merge-links .footer-column {
+				padding: 40px;
+			}
+			@media (max-width: 991px) {
+				#ttcmsfooter {
+					padding: 20px 0;
+					border: none;
+				}
+				.merge-links {
+					border: none;
+				}
+				.merge-links .footer-column {
+					padding: 0;
+				}
+			}
+/* ---------------------- End TemplateTrip - TT CMS Footer Info  --------------------------*/
+/*---------------------------------------- Footer Store Info Block Start -----------------------------*/
+		footer .contact-us,footer .contact-us ul {
+			float: left;
+			width: 100%;
+			margin: 0;
+		}
+		footer .contact-us ul li {
+			padding: 0 0 10px;
+		}
+		footer .contact-us i:before {
+			color: #fd9d24;
+			font-size: 20px;
+		}
+		footer .contact-us ul li i {
+			float: left;
+			height: 25px;
+			margin: 0 7px 0 0;
+			text-align: center;
+			width: 25px;
+		}
+		footer .contact-us span {
+		  color: #ffffff;
+		  font: 300 13px/25px "Roboto",Helvetica,sans-serif;
+		  padding: 0;
+		}
+		footer .contact-us ul li i.fa-map-marker {
+			height: 32px;
+			padding: 7px 0 0;
+		}
+/*---------------------------------------- Footer Store Info Block End -----------------------------*/
+
+footer .footer-column h5 {
+	color: #ffffff;
+	cursor: pointer;
+	font: 500 16px/22px "Roboto",sans-serif;
+	letter-spacing: 0.6px;
+	margin: 0 0 15px;
+	position: relative;
+	text-transform: capitalize;
+}
+footer a {
+    color: #ffffff;
+    font: 300 13px/28px "Roboto",Helvetica,sans-serif;
+}
+footer{
+        background: transparent;
+}
+/*---------------------------------------- Footer Copyraight Block -----------------------------*/
+.copyright-footer, .o_footer_copyright{
+	background-color: #272723;
+	.container{
+		background-color: #272723;
+		border-top: 1px solid #777777;
+		text-align: center;
+	}
+	
+}
+/*---------------------------------------- Footer Copyraight Block End -----------------------------*/

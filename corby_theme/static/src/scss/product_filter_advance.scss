@@ -1,0 +1,43 @@
+.tr-filter-wrap form label{
+    font-weight: normal !important;
+}
+.flt_heading{
+    background-color: #fd9d24;
+    padding: 6px 15px;
+}
+.card-wrapper{
+	background-color: #ffffff;
+	border: 1px solid #dddddd;
+	border-radius: 5px;
+	box-shadow: #dddddd;
+}
+.card-group {
+	border-bottom: 1px solid #dddddd;
+  }
+.card-header{
+    background-color: initial;
+	border: initial;
+	padding-top: 15px !important;
+}
+.p_filter_header {
+	color: black;
+  }
+.p_filter_icon {
+	border-color: $-corby-color-sidebar;
+	color: $-corby-color-sidebar;
+  }
+.card{
+	border: initial;
+}
+.p_filter_icon {
+    padding: 2px 2px 1px 3px;
+}
+@media (min-width: 576px){
+	.card-group > .card:only-child {
+		border-radius: none;
+	}
+	.card-group > .card:only-child .card-header{
+		border-top-left-radius: none;
+		border-top-right-radius: none;
+	}
+}

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="website.aboutus" name="About us">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure" id="about_us">
+                    <section class="img-header">
+                        <div class="container">
+                            <div class="row mb32 mt32">
+                                <div class="section-title text-center">
+                                    <h2 class="font-w-8"><span class="color">A</span>bout <span class="color">
+                                        U</span>s
+                                    </h2>
+                                    <p class="text-black">Sed ut perspiciatis unde omnis iste natus error sit
+                                        voluptatem
+                                    </p>
+                                </div>
+                                <!-- /.sc_layouts_title -->
+                            </div>
+                        </div>
+                    </section>
+                    <section class="bg-sand hero-block home-about">
+                        <div class="container">
+                            <div class="row mb32 mt32">
+                                <div class="col-md-6 ">
+                                    <p class="description">
+                                        Metus! Repellat itaque atque sagittis lectus, volutpat necessitatibus
+                                        praesentium vestibulum atque quidem quaerat sapien. Ex dui aliqua orci dictum
+                                        integer! est elit. Ipsam numquam. Accumsan explicabo vulputate quam aspernatur
+                                        platea inventore iure vel ante,
+                                    </p>
+                                    <p class="description">
+                                        Lectus faucibus, ex eveniet! Lacus ipsum repellendus habitasse malesuada dictum
+                                        dolorem purus iure congue quibusdam! Rutrum, hic itaque. Irure nihil! Ducimus?
+                                        Primis rem.
+                                    </p>
+                                </div>
+
+                                <div class="col-md-6 ">
+                                    <img src="/corby_theme/static/src/img/about-us_1.jpg"
+                                         class="img img-fluid"/>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="container">
+                            <div class="row  mb32 mt32">
+                                <div class="section-title ptb-20 text-center">
+                                    <h2 style="color: #000 !important;" class="font-w-8">
+                                        <span class="color">O</span>ur <span class="color">
+                                        S</span>ervice
+                                    </h2>
+                                    <p>Sed ut perspiciatis unde omnis iste natus error sit
+                                        voluptatem
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="features" class="features">
+                        <div class="container">
+                            <div class="row mb32 mt32">
+                                <div class="col-md-12">
+                                    <div class="section">
+                                        <!-- Single Feature Start -->
+                                        <div class="col-md-3 col-sm-6 col-12 mt16 mb16">
+                                            <div class="feat p-25 bx-shadow">
+                                                <i class="fa fa-tablet font-45"></i>
+                                                <h5 class="font-20 pt-15">Web UI Design</h5>
+                                                <h6 class="font-13 font-w-6">Lorem ipsum dolor sit amet,
+                                                    consectetuer
+                                                    adipiscing elit, sed diam nonummy nibh euismod voluptatem
+                                                </h6>
+                                            </div>
+                                        </div>
+                                        <!-- Single Feature End -->
+                                        <!-- Single Feature Start -->
+                                        <div class="col-md-3 col-sm-6 col-12 mt16 mb16">
+                                            <div class="feat p-25 bx-shadow active">
+                                                <i class="fa fa-leaf font-45"></i>
+                                                <h5 class="font-20 pt-15">Creative Design</h5>
+                                                <h6 class="font-13 font-w-6">Lorem ipsum dolor sit amet,
+                                                    consectetuer
+                                                    adipiscing elit, sed diam nonummy nibh euismod voluptatem
+                                                </h6>
+                                            </div>
+                                        </div>
+                                        <!-- Single Feature End -->
+                                        <!-- Single Feature Start -->
+                                        <div class="col-md-3 col-sm-6 col-12 mt16 mb16">
+                                            <div class="feat p-25 bx-shadow">
+                                                <i class="fa fa-rocket font-45"></i>
+                                                <h5 class="font-20 pt-15">Performance</h5>
+                                                <h6 class="font-13 font-w-6">Lorem ipsum dolor sit amet,
+                                                    consectetuer
+                                                    adipiscing elit, sed diam nonummy nibh euismod voluptatem
+                                                </h6>
+                                            </div>
+                                        </div>
+                                        <!-- Single Feature End -->
+                                        <!-- Single Feature Start -->
+                                        <div class="col-md-3 col-sm-6 col-12 mt16 mb16">
+                                            <div class="feat p-25 bx-shadow">
+                                                <i class="fa fa-star-o font-45"></i>
+                                                <h5 class="font-20 pt-15">Flexibility</h5>
+                                                <h6 class="font-13 font-w-6">Lorem ipsum dolor sit amet,
+                                                    consectetuer
+                                                    adipiscing elit, sed diam nonummy nibh euismod voluptatem
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="container">
+                            <div class="row">
+                                <div class="section-title ptb-20 text-center">
+                                    <h2 style="color: #000 !important;" class="font-w-8"><span class="color">O</span>ur <span
+                                            class="color">T</span>eam
+                                    </h2>
+                                    <p class="text-black">Sed ut perspiciatis unde omnis iste natus error sit
+                                        voluptatem
+                                    </p>
+                                </div>
+                                <!-- /.sc_layouts_title -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="section">
+                        <div class="container">
+                            <div class="row mb32 mt32">
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="tema-member">
+                                        <div class="team-thumbnail">
+                                            <img src="/corby_theme/static/src/img/team-1.jpg"
+                                                 alt=""/>
+                                            <div class="overlay">
+                                                <div class="social-media">
+                                                    <a href="#" class="facebook">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </a>
+                                                    <a href="#" class="twitter">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </a>
+                                                    <a href="#" class="google">
+                                                        <i class="fa fa-google-plus"></i>
+                                                    </a>
+                                                    <a href="#" class="linkedin">
+                                                        <i class="fa fa-linkedin"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="info">
+                                            <h4>David Givens</h4>
+                                            <p>Chief technical officer</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="tema-member">
+                                        <div class="team-thumbnail">
+                                            <img src="/corby_theme/static/src/img/team-2.jpg"
+                                                 alt=""/>
+                                            <div class="overlay">
+                                                <div class="social-media">
+                                                    <a href="#" class="facebook">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </a>
+                                                    <a href="#" class="twitter">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </a>
+                                                    <a href="#" class="google">
+                                                        <i class="fa fa-google-plus"></i>
+                                                    </a>
+                                                    <a href="#" class="linkedin">
+                                                        <i class="fa fa-linkedin"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="info">
+                                            <h4>Darrell S.Allen</h4>
+                                            <p>Software Enginner</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="tema-member">
+                                        <div class="team-thumbnail">
+                                            <img src="/corby_theme/static/src/img/team-3.jpg"
+                                                 alt=""/>
+                                            <div class="overlay">
+                                                <div class="social-media">
+                                                    <a href="#" class="facebook">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </a>
+                                                    <a href="#" class="twitter">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </a>
+                                                    <a href="#" class="google">
+                                                        <i class="fa fa-google-plus"></i>
+                                                    </a>
+                                                    <a href="#" class="linkedin">
+                                                        <i class="fa fa-linkedin"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="info">
+                                            <h4>John Doe</h4>
+                                            <p>Business manager</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="tema-member">
+                                        <div class="team-thumbnail">
+                                            <img src="/corby_theme/static/src/img/team-4.jpg"
+                                                 alt=""/>
+                                            <div class="overlay">
+                                                <div class="social-media">
+                                                    <a href="#" class="facebook">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </a>
+                                                    <a href="#" class="twitter">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </a>
+                                                    <a href="#" class="google">
+                                                        <i class="fa fa-google-plus"></i>
+                                                    </a>
+                                                    <a href="#" class="linkedin">
+                                                        <i class="fa fa-linkedin"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="info">
+                                            <h4>Justyna Michallek</h4>
+                                            <p>Creative Director &amp; Ceo</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

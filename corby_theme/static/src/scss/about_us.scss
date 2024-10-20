@@ -1,0 +1,299 @@
+
+
+
+
+
+/*
+================================================
+10. Features-Area
+================================================
+*/
+/* |------------[ Feature-1 ]-----------| */
+.section .feat{
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+.section .feat i{
+color:$-alpha;
+}
+.section .feat.active{
+background:$-alpha !important;
+color:#fff !important;
+}
+.section .feat.active i, .section .feat.active h6{
+color:#FFFFFF !important;
+}
+.section .feat:hover, .section .feat:hover i{
+color:#fff;
+background:$-alpha;
+cursor:pointer;
+    transform: scale(1.04);
+    z-index: 2;
+-webkit-transition: all .3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+.section .feat-1{
+background:$-alpha;
+}
+.feat-sec:hover i{
+color:$-alpha;
+-webkit-transition: all .3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+
+/* |------------[ Feature-2 ]-----------| */
+.nav-tabs {
+    border: 0;
+}
+.tab-content h1 {
+    margin-top: 0;
+}
+.btn-feature.active{
+background: $-alpha;
+    color: #fff;
+}
+.btn-feature {
+    background-color: #f2f2f2;
+	font-size:20px;
+    box-shadow: none;
+    border: 0;
+    width: 100%;
+    padding: 20px 35px;
+    margin: 2px;
+    text-align: left;
+    font-weight: 500;
+    text-decoration: none;
+    display: block;
+}
+.btn-feature:hover,
+.btn-feature:focus,
+.btn-feature:active {
+    border: 0;
+    outline: none;
+    background: $-alpha;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* |------------[ Feature-3 ]-----------| */
+.features-section .single-item{
+  position: relative;
+  z-index: 1;
+}
+.features-section .single-item .icon-box i{
+  position: relative;
+  display: inline-block;
+  background: $-alpha;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  border-radius: 50%;
+  text-align: center;
+  margin-top: -30px;
+  top: -30px;
+  transition: all 900ms ease;
+}
+.features-section .single-item .icon-box i:before{
+  font-size: 24px;
+  color: #fff;
+  margin: 0px;
+}
+.features-section .single-item:before{
+  position: absolute;
+  content: '';
+  background: $-alpha;
+  height: 3px;
+  width: 0%;
+  left: 0px;
+  bottom: 0px;
+  z-index: 1;
+  transition: all 900ms ease;
+}
+.features-section .single-item:hover:before{
+  width: 100%;
+  transition: all 900ms ease;
+}
+.features-section .single-item .single-content{
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 70px;
+  padding: 0px 35px 0px 35px;
+  transition: all 900ms ease;
+}
+.features-section .single-item:hover .single-content{
+  height: 100%;
+  transition: all 900ms ease;
+}
+.features-section .single-item h5{
+  color: #fff;
+}
+.features-section .single-item:hover h5,
+.features-section .single-item:hover p{
+  display: block;
+}
+.features-section .single-item p{
+  position: relative;
+  font-size: 14px;
+  line-height: 25px;
+  color: #fff;
+  display: none;
+}
+.features-section .single-item:hover .icon-box i{
+  top: -10px;
+  transition: all 900ms ease;
+  margin-bottom: 70px;
+}
+.features-section .single-item .icon-box {
+  margin-bottom: -23px;
+}
+
+.font-45 {
+  font-size: 45px !important;
+}
+.pt-15 {
+  padding-top: 15px !important;
+}
+.font-20 {
+  font-size: 20px !important;
+}
+.bx-shadow{
+    -webkit-box-shadow: 0px 8px 20px 0px rgba(0,0,0,0.12);
+    -moz-box-shadow: 0px 8px 20px 0px rgba(0,0,0,0.12);
+    box-shadow: 0px 8px 20px 0px rgba(0,0,0,0.12);
+}
+.p-25 {
+    padding: 25px !important;
+}
+.font-w-6 {
+    font-size: 13px !important;
+    margin-top: 0;
+    text-transform: none;
+    line-height: 23px;
+}
+
+/*--------------------------------------------OUR TEAM----------------------------------*/
+
+.tema-member {
+  text-align: center;
+}
+.tema-member .team-thumbnail {
+  display: block;
+  position: relative;
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+.tema-member .team-thumbnail img {
+  width: 100%;
+}
+.tema-member .team-thumbnail .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: block;
+  opacity: 0;
+  bottom: -1px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.tema-member .team-thumbnail .social-media {
+  position: absolute;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  bottom: 0;
+  -webkit-transform: translateY(100%);
+  -moz-webkit-transform: translateY(100%);
+  transform: translateY(100%);
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.tema-member .team-thumbnail .social-media a {
+  display: inline-block;
+}
+.tema-member .team-thumbnail .social-media a i {
+  font-size: 20px;
+  color: #fff;
+  width: 48px;
+  line-height: 48px;
+  height: 48px;
+  -webkit-transition: all 0.9s ease;
+  -moz-transition: all 0.9s ease;
+  transition: all 0.9s ease;
+}
+.tema-member .team-thumbnail .social-media a.facebook:hover i {
+  background: #507CBE;
+}
+.tema-member .team-thumbnail .social-media a.twitter:hover i {
+  background: #63CDF1;
+}
+.tema-member .team-thumbnail .social-media a.google:hover i {
+  background: #F16261;
+}
+.tema-member .team-thumbnail .social-media a.linkedin:hover i {
+  background: #90CADD;
+}
+.tema-member .info h4 {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+.tema-member .info h5 {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 2.5px;
+}
+.tema-member:hover .social-media {
+  -webkit-transform: translateY(-90%);
+  -moz-webkit-transform: translateY(-90%);
+  transform: translateY(-90%);
+}
+.tema-member:hover .overlay {
+  opacity: 1;
+}
+.team-2 {
+  background: #F9FAFC;
+}
+.team-2 .tema-member .overlay .info {
+  padding: 120px 20px;
+  opacity: 0;
+  -webkit-transition: all 0.9s ease-in-out;
+  -moz-transition: all 0.9s ease-in-out;
+  -ms-transition: all 0.9s ease-in-out;
+  -o-transition: all 0.9s ease-in-out;
+  transition: all 0.9s ease-in-out;
+}
+.team-2 .tema-member .overlay .info h5 {
+  margin-bottom: 20px;
+}
+.team-2 .tema-member:hover .social-media {
+  -webkit-transform: translateY(-125%);
+  -moz-webkit-transform: translateY(-125%);
+  transform: translateY(-125%);
+}
+.team-2 .tema-member:hover .info {
+  opacity: 1;
+  margin-top: 12px;
+}
+
+.tema-member .team-thumbnail .social-media a i {
+  background: $-alpha;
+}
